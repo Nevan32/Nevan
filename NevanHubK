@@ -1,0 +1,24 @@
+local Library = loadstring(game:HttpGet("https://pastebin.com/raw/vff1bQ9F"))()
+local Window = Library.CreateLib("Nevan Hub | GUNAKAN DGN RISIKO ANDA SENDIRI", "DarkTheme")
+
+-- MAIN
+local Tab = Window:NewTab("Main")
+local MainSection = Tab:NewSection("Main")
+
+
+MainSection:NewButton("Slap Aura", "Request Dari Chiki", function()
+loadstring(game:HttpGet(("https://raw.githubusercontent.com/Nevan32/Nevan/main/Hitbox"),true))()
+end)
+
+-- MISC
+local Tab = Window:NewTab("MISC")
+local MiscSection = Tab:NewSection("MISC")
+
+
+MiscSection:NewButton("Change Walkspeed", "Can change the movement speed as you like", function()
+loadstring(game:HttpGet(("https://pastefy.app/HHAKyQdA/raw"),true))()
+end)
+
+MiscSection:NewButton("Shiftlock", "Cocok untuk game yang gaada fitur shiftlock nya", function()
+loadstring(game:HttpGet(("https://pastefy.app/gD6JVcxL/raw"),true))()
+end)
