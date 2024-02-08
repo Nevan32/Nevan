@@ -22,3 +22,7 @@ end)
 MiscSection:NewButton("Shiftlock", "Cocok untuk game yang gaada fitur shiftlock nya", function()
 loadstring(game:HttpGet(("https://pastefy.app/gD6JVcxL/raw"),true))()
 end)
+
+MiscSection:NewButton("Esp Tembus Pandang", "Tembus Pandang Warna Merah", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/EspRed"))()
+end)
