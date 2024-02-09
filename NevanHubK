@@ -11,6 +11,9 @@ loadstring(game:HttpGet(("https://raw.githubusercontent.com/Nevan32/Nevan/main/H
 end)
 
 local MainSection = Tab:NewSection("Teleport")
+MainSection:NewButton("Slapple Island", "Request Dari Chiki", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Arena.island5.Union.CFrame * CFrame.new(0,3.25,0)
+end)
 
 -- MISC
 local Tab = Window:NewTab("MISC")
