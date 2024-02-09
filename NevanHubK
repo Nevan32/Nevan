@@ -10,9 +10,32 @@ MainSection:NewButton("Hitbox", "Request Dari Chiki", function()
 loadstring(game:HttpGet(("https://raw.githubusercontent.com/Nevan32/Nevan/main/Hitbox"),true))()
 end)
 
--- Teleport
+
+-- MISC
+local Tab = Window:NewTab("MISC")
+local MiscSection = Tab:NewSection("MISC")
+
+
+MiscSection:NewButton("Change Walkspeed", "Can change the movement speed as you like", function()
+loadstring(game:HttpGet(("https://pastefy.app/HHAKyQdA/raw"),true))()
+end)
+
+MiscSection:NewButton("Shiftlock", "Cocok untuk game yang gaada fitur shiftlock nya", function()
+loadstring(game:HttpGet(("https://pastefy.app/gD6JVcxL/raw"),true))()
+end)
+
+MiscSection:NewButton("Esp Tembus Pandang", "Tembus Pandang Warna Merah", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/EspRed"))()
+end)
+
+-- Other
+local Tab = Window:NewTab("Other")
+local MiscSection = Tab:NewSection("Other")
+
+
+-- SlapBattles
 local Tab = Window:NewTab("SlapBattles")
-local TeleportSection = Tab:NewSection("Teleport")
+local TeleportSection = Tab:NewSection("Teleport | Slap Aura Di Main Yang Hitbox")
 
 TeleportSection:NewButton("Slapple Island", "Request Dari Chiki", function()
 loadstring(game:HttpGet("https://pastefy.app/X2nDCtt9/raw"))()
@@ -37,24 +60,3 @@ end)
 TeleportSection:NewButton("Plate", "Request Dari Chiki", function()
 loadstring(game:HttpGet("https://pastefy.app/xkb3PV4u/raw"))()
 end) 
-
--- MISC
-local Tab = Window:NewTab("MISC")
-local MiscSection = Tab:NewSection("MISC")
-
-
-MiscSection:NewButton("Change Walkspeed", "Can change the movement speed as you like", function()
-loadstring(game:HttpGet(("https://pastefy.app/HHAKyQdA/raw"),true))()
-end)
-
-MiscSection:NewButton("Shiftlock", "Cocok untuk game yang gaada fitur shiftlock nya", function()
-loadstring(game:HttpGet(("https://pastefy.app/gD6JVcxL/raw"),true))()
-end)
-
-MiscSection:NewButton("Esp Tembus Pandang", "Tembus Pandang Warna Merah", function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/EspRed"))()
-end)
-
--- Other
-local Tab = Window:NewTab("Other")
-local MiscSection = Tab:NewSection("Other")
