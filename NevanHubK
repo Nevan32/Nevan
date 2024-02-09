@@ -10,26 +10,33 @@ MainSection:NewButton("Slap Aura", "Request Dari Chiki", function()
 loadstring(game:HttpGet(("https://raw.githubusercontent.com/Nevan32/Nevan/main/Hitbox"),true))()
 end)
 
-local MainSection = Tab:NewSection("Teleport")
-MainSection:NewButton("Slapple Island", "Request Dari Chiki", function()
+-- Teleport
+local Tab = Window:NewTab("Teleport")
+local TeleportSection = Tab:NewSection("Teleport")
+
+TeleportSection:NewButton("Slapple Island", "Request Dari Chiki", function()
 loadstring(game:HttpGet("https://pastefy.app/X2nDCtt9/raw"))()
 end)
 
-MainSection:NewButton("Turnament", "Request Dari Chiki", function()
+TeleportSection:NewButton("Turnament", "Request Dari Chiki", function()
 loadstring(game:HttpGet("https://pastefy.app/CtMjNMaW/raw"))()
 end)
 
-MainSection:NewButton("Moai Island", "Request Dari Chiki", function()
+TeleportSection:NewButton("Moai Island", "Request Dari Chiki", function()
 loadstring(game:HttpGet("https://pastefy.app/KnuBhDFZ/raw"))()
 end)
 
-MainSection:NewButton("Arena", "Request Dari Chiki", function()
+TeleportSection:NewButton("Arena", "Request Dari Chiki", function()
 loadstring(game:HttpGet("https://pastefy.app/EE7KwxwP/raw"))()
 end)
 
-MainSection:NewButton("Lobby", "Request Dari Chiki", function()
+TeleportSection:NewButton("Lobby", "Request Dari Chiki", function()
 loadstring(game:HttpGet("https://pastefy.app/BIXGmsR7/raw"))()
-end)
+end) 
+
+TeleportSection:NewButton("Plate", "Request Dari Chiki", function()
+loadstring(game:HttpGet("https://pastefy.app/xkb3PV4u/raw"))()
+end) 
 
 -- MISC
 local Tab = Window:NewTab("MISC")
@@ -47,3 +54,7 @@ end)
 MiscSection:NewButton("Esp Tembus Pandang", "Tembus Pandang Warna Merah", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/EspRed"))()
 end)
+
+-- Other
+local Tab = Window:NewTab("Other")
+local MiscSection = Tab:NewSection("Other")
