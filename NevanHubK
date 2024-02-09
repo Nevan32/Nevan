@@ -15,6 +15,26 @@ MainSection:NewButton("Slapple Island", "Request Dari Chiki", function()
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Arena.island5.Union.CFrame * CFrame.new(0,3.25,0)
 end)
 
+MainSection:NewButton("Turnament", "Request Dari Chiki", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Battlearena.Arena.CFrame * CFrame.new(0,10,0)
+end)
+
+MainSection:NewButton("Moai Island", "Request Dari Chiki", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(215, -15.5, 0.5)
+end)
+
+MainSection:NewButton("Arena", "Request Dari Chiki", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Origo.CFrame * CFrame.new(0,-5,0)
+end)
+
+MainSection:NewButton("Default Arena", "Request Dari Chiki", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(120,360,-3
+end)
+
+MainSection:NewButton("Lobby", "Request Dari Chiki", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-800,328,-2.5)
+end)
+
 -- MISC
 local Tab = Window:NewTab("MISC")
 local MiscSection = Tab:NewSection("MISC")
