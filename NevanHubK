@@ -10,6 +10,8 @@ MainSection:NewButton("Slap Aura", "Request Dari Chiki", function()
 loadstring(game:HttpGet(("https://raw.githubusercontent.com/Nevan32/Nevan/main/Hitbox"),true))()
 end)
 
+local MainSection = Tab:NewSection("Teleport")
+
 -- MISC
 local Tab = Window:NewTab("MISC")
 local MiscSection = Tab:NewSection("MISC")
