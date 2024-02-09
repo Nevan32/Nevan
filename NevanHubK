@@ -27,10 +27,6 @@ MainSection:NewButton("Arena", "Request Dari Chiki", function()
 loadstring(game:HttpGet("https://pastefy.app/EE7KwxwP/raw"))()
 end)
 
-MainSection:NewButton("Default Arena", "Request Dari Chiki", function()
-loadstring(game:HttpGet("https://pastefy.app/5Zh6wy7y/raw"))()
-end)
-
 MainSection:NewButton("Lobby", "Request Dari Chiki", function()
 loadstring(game:HttpGet("https://pastefy.app/BIXGmsR7/raw"))()
 end)
