@@ -10,10 +10,6 @@ MainSection:NewButton("Slap Aura", "Request Dari Chiki", function()
 loadstring(game:HttpGet(("https://raw.githubusercontent.com/Nevan32/Nevan/main/Hitbox"),true))()
 end)
 
-MainSection:NewButton("Glove Esp", "Bisa Melihat Musuh Pake Glove Apa", function()
-loadstring(game:HttpGet(("https://pastefy.app/Ceap76n3/raw"),true))()
-end)
-
 -- Teleport
 local Tab = Window:NewTab("Teleport")
 local TeleportSection = Tab:NewSection("Teleport")
