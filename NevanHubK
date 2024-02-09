@@ -12,27 +12,27 @@ end)
 
 local MainSection = Tab:NewSection("Teleport")
 MainSection:NewButton("Slapple Island", "Request Dari Chiki", function()
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Arena.island5.Union.CFrame * CFrame.new(0,3.25,0)
+loadstring(game:HttpGet("https://pastefy.app/X2nDCtt9/raw"))()
 end)
 
 MainSection:NewButton("Turnament", "Request Dari Chiki", function()
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Battlearena.Arena.CFrame * CFrame.new(0,10,0)
+loadstring(game:HttpGet("https://pastefy.app/CtMjNMaW/raw"))()
 end)
 
 MainSection:NewButton("Moai Island", "Request Dari Chiki", function()
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(215, -15.5, 0.5)
+loadstring(game:HttpGet("https://pastefy.app/KnuBhDFZ/raw"))()
 end)
 
 MainSection:NewButton("Arena", "Request Dari Chiki", function()
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Origo.CFrame * CFrame.new(0,-5,0)
+loadstring(game:HttpGet("https://pastefy.app/EE7KwxwP/raw"))()
 end)
 
 MainSection:NewButton("Default Arena", "Request Dari Chiki", function()
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(120,360,-3
+loadstring(game:HttpGet("https://pastefy.app/5Zh6wy7y/raw"))()
 end)
 
 MainSection:NewButton("Lobby", "Request Dari Chiki", function()
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-800,328,-2.5)
+loadstring(game:HttpGet("https://pastefy.app/BIXGmsR7/raw"))()
 end)
 
 -- MISC
