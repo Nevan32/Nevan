@@ -6,7 +6,7 @@ local Tab = Window:NewTab("Main")
 local MainSection = Tab:NewSection("Main")
 
 
-MainSection:NewButton("Slap Aura", "Request Dari Chiki", function()
+MainSection:NewButton("Hitbox", "Request Dari Chiki", function()
 loadstring(game:HttpGet(("https://raw.githubusercontent.com/Nevan32/Nevan/main/Hitbox"),true))()
 end)
 
