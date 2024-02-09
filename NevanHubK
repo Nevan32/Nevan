@@ -11,7 +11,7 @@ loadstring(game:HttpGet(("https://raw.githubusercontent.com/Nevan32/Nevan/main/H
 end)
 
 -- Teleport
-local Tab = Window:NewTab("Teleport")
+local Tab = Window:NewTab("SlapBattles")
 local TeleportSection = Tab:NewSection("Teleport")
 
 TeleportSection:NewButton("Slapple Island", "Request Dari Chiki", function()
