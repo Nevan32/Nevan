@@ -65,7 +65,7 @@ end)
 local Tab = Window:NewTab("CombatWarriors")
 local MiscSection = Tab:NewSection("CombatWarriors")
 
-CombatWarriorsSection:NewButton("Auto Parry | Not 100% Accurate", "Tidak 100% Akurat", function()
+CombatWarriorsSection:NewButton("AutoParry", "Tidak 100% Akurat/Not 100% Accurate", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/AutoParryCw"))()
 end) 
 
