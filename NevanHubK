@@ -61,15 +61,6 @@ TeleportSection:NewButton("Plate", "Request Dari Chiki", function()
 loadstring(game:HttpGet("https://pastefy.app/xkb3PV4u/raw"))()
 end) 
 
--- Combat Warriors 
-local Tab = Window:NewTab("CombatWarriors")
-local MiscSection = Tab:NewSection("CombatWarriors")
-
-CombatWarriorsSection:NewButton("AutoParry", "Tidak 100% Akurat/Not 100% Accurate", function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/AutoParryCw"))()
-end) 
-
-
 local ScreenGui = Instance.new("ScreenGui")
 ScreenGui.Name = "ScreenGui"
 ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
