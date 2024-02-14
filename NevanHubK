@@ -61,11 +61,11 @@ TeleportSection:NewButton("Plate", "Request Dari Chiki", function()
 loadstring(game:HttpGet("https://pastefy.app/xkb3PV4u/raw"))()
 end) 
 
--- MAIN
+-- CombatWarriors 
 local Tab = Window:NewTab("CombatWarriors")
 local CombatWarriorsSection = Tab:NewSection("CombatWarriors")
 
-CombatWarriorsSection:NewButton("AutoParry", "Tidak 100% Akurat/Not 100% Accurate", function()
+CombatWarriorsSection:NewButton("AutoParry | Not 100% Accurate", "Tidak 100% Akurat/Not 100% Accurate", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/AutoParryCw"))()
 end) 
 
