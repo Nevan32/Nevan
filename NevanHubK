@@ -28,10 +28,17 @@ MiscSection:NewButton("Esp Tembus Pandang", "Tembus Pandang Warna Merah", functi
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/EspRed"))()
 end)
 
+MiscSection:NewButton("Teleport Player Gui", "Sc simple nampilin Ui buat Tp ke player", function()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/Infinity2346/Tect-Menu/main/Teleport%20Gui.lua'))()
+end)
+
 -- Other
 local Tab = Window:NewTab("Other")
 local MiscSection = Tab:NewSection("Other")
 
+MiscSection:NewButton("Infinite Yield", "Command Admin", function()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+end)
 
 -- SlapBattles
 local Tab = Window:NewTab("SlapBattles")
