@@ -105,4 +105,5 @@ end)
 local Corner = Instance.new("UICorner")
 Corner.Name = "Corner"
 Corner.Parent = Toggle
- 
+
+
