@@ -3,7 +3,7 @@ local Window = Library.CreateLib("Nevan Hub | GUNAKAN DGN RISIKO ANDA SENDIRI", 
 
 --INFO
 local Tab = Window:NewTab("INFO")
-local InfoSection = Tab:NewSection("JANGAN PENCET TOMBOL X JIKA INGIN BISA MENGGUNAKAN TOOGLE!")")
+local InfoSection = Tab:NewSection("JANGAN PENCET TOMBOL X JIKA INGIN BISA MENGGUNAKAN TOOGLE!")
 
 -- MAIN
 local Tab = Window:NewTab("Main")
