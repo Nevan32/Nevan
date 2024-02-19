@@ -82,6 +82,13 @@ CombatWarriorsSection:NewButton("AutoParry | Not 100% Accurate", "Tidak 100% Aku
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/AutoParryCw"))()
 end) 
 
+CombatWarriorsSection:NewButton("Hitbox Khusus CW | Cek Desk Ini", "Butuh Keyboard Untuk Mengaktifkannya Yaitu V", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/HitboxCw"))()
+
+CombatWarriorsSection:NewButton("Keyboard Untuk Aktifkan Hitbox CW", "Cocok Buat Mobile yang gapunya PC", function()
+loadstring(game:HttpGet("https://gist.githubusercontent.com/RedZenXYZ/4d80bfd70ee27000660e4bfa7509c667/raw/da903c570249ab3c0c1a74f3467260972c3d87e6/KeyBoard%2520From%2520Ohio%2520Fr%2520Fr"))()
+end) 
+
 local ScreenGui = Instance.new("ScreenGui")
 ScreenGui.Name = "ScreenGui"
 ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
