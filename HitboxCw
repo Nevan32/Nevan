@@ -19,3 +19,30 @@ for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
 end
 end
 end)
+
+-- Create a ScreenGui to hold the notification
+local gui = Instance.new("ScreenGui")
+gui.Parent = game.Players.LocalPlayer.PlayerGui
+
+-- Create a Frame for the notification
+local frame = Instance.new("Frame")
+frame.Size = UDim2.new(0, 200, 0, 50)
+frame.Position = UDim2.new(1, -220, 1, -60)
+frame.BackgroundColor3 = Color3.new(0, 0, 0)
+frame.BorderSizePixel = 0
+frame.Parent = gui
+
+-- Create a TextBox inside the Frame for the text
+local text = Instance.new("TextLabel")
+text.Size = UDim2.new(1, 0, 1, 0)
+text.Text = "Hitbox Cw Aktif"
+text.TextScaled = true
+text.TextColor3 = Color3.new(1, 1, 1)
+text.Parent = frame
+
+-- Wait for 5 seconds, then remove the notification
+wait(5)
+gui:Destroy()
+local HeadSize = 20
+local IsDisabled = true
+local IsTeamCheckEnabled = false 
