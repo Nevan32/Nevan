@@ -84,6 +84,7 @@ end)
 
 CombatWarriorsSection:NewButton("Hitbox Khusus CW | Cek Desk Ini", "Butuh Keyboard Untuk Mengaktifkannya Yaitu V", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/HitboxCw"))()
+end)
 
 CombatWarriorsSection:NewButton("Keyboard Untuk Aktifkan Hitbox CW", "Cocok Buat Mobile yang gapunya PC", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/Keyboard"))()
