@@ -92,7 +92,7 @@ end)
 
 -- SurviveTheKiller
 local Tab = Window:NewTab("STK")
-local CombatWarriorsSection = Tab:NewSection("STK")
+local STKSection = Tab:NewSection("STK")
 
 
 STKSection:NewButton("WALKSPEED 30", "Ubah Walkspeed", function()
