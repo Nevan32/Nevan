@@ -107,7 +107,7 @@ game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 24
 end) 
 
 STKSection:NewButton("WALKSPEED 23", "Ubah Walkspeed", function()
-loadstring(game:HttpGet("https://pastefy.app/acGEEXdg/raw"))()
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 23
 end) 
 
 STKSection:NewButton("WALKSPEED 22", "Ubah Walkspeed", function()
