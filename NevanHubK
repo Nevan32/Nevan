@@ -90,6 +90,40 @@ CombatWarriorsSection:NewButton("Keyboard Untuk Aktifkan Hitbox CW", "Cocok Buat
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/Keyboard"))()
 end) 
 
+-- SurviveTheKiller
+local Tab = Window:NewTab("STK")
+local CombatWarriorsSection = Tab:NewSection("STK")
+
+
+STKSection:NewButton("WALKSPEED 30", "Ubah Walkspeed", function()
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 30
+end) 
+
+STKSection:NewButton("WALKSPEED 25", "Ubah Walkspeed", function()
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 25
+end) 
+
+STKSection:NewButton("WALKSPEED 24", "Ubah Walkspeed", function()
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 24
+end) 
+
+STKSection:NewButton("WALKSPEED 23", "Ubah Walkspeed", function()
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 23
+end) 
+
+STKSection:NewButton("WALKSPEED 22", "Ubah Walkspeed", function()
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 22
+end) 
+
+STKSection:NewButton("WALKSPEED 21", "Ubah Walkspeed", function()
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 21
+end) 
+
+STKSection:NewButton("WALKSPEED 20", "Ubah Walkspeed", function()
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 20
+end) 
+
+
 local ScreenGui = Instance.new("ScreenGui")
 ScreenGui.Name = "ScreenGui"
 ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
