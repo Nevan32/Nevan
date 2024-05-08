@@ -90,10 +90,9 @@ CombatWarriorsSection:NewButton("Keyboard Untuk Aktifkan Hitbox CW", "Cocok Buat
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/Keyboard"))()
 end) 
 
--- SurviveTheKiller
+-- STK
 local Tab = Window:NewTab("STK")
 local STKSection = Tab:NewSection("STK")
-
 
 STKSection:NewButton("WALKSPEED 30", "Ubah Walkspeed", function()
 game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 30
@@ -108,7 +107,7 @@ game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 24
 end) 
 
 STKSection:NewButton("WALKSPEED 23", "Ubah Walkspeed", function()
-game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 23
+loadstring(game:HttpGet("https://pastefy.app/acGEEXdg/raw"))()
 end) 
 
 STKSection:NewButton("WALKSPEED 22", "Ubah Walkspeed", function()
