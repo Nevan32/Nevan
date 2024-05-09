@@ -92,11 +92,7 @@ end)
 
 -- Walkspeed
 local Tab = Window:NewTab("Walkspeed")
-local WalkspeedSection = Tab:NewSection("Tempat Atur")
-local WalkspeedSection = Tab:NewSection("Walkspeed Manual")
-local WalkspeedSection = Tab:NewSection("Dan Untuk")
-local WalkspeedSection = Tab:NewSection("Rata-rata Walkspeed")
-local WalkspeedSection = Tab:NewSection("Normal Adalah 16")
+local WalkspeedSection = Tab:NewSection("Ubah Walkspeed Manual")
 
 WalkspeedSection:NewButton("WALKSPEED 30", "Ubah Walkspeed", function()
 game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 30
@@ -112,7 +108,7 @@ end)
 
 WalkspeedSection:NewButton("WALKSPEED 23", "Ubah Walkspeed", function()
 game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 23
-end) bisa 
+end) 
 
 WalkspeedSection:NewButton("WALKSPEED 22", "Ubah Walkspeed", function()
 game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 22
@@ -126,7 +122,7 @@ WalkspeedSection:NewButton("WALKSPEED 20", "Ubah Walkspeed", function()
 game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 20
 end) 
 
-WalkspeedSection:NewButton("WALKSPEED 19", "Ubah Walkspeed", function()
+WalkspedSection:NewButton("WALKSPEED 19", "Ubah Walkspeed", function()
 game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 19
 end) 
 
@@ -171,4 +167,3 @@ loadstring(game:HttpGetAsync("https://guard.lol/scripts/guardnotify.lua"))("http
 guardNotify("NevanHub","Tq Udh Pake Script gw hehe", 5, Color3.fromRGB(49, 55, 66), Color3.fromRGB(255, 102, 88), Color3.fromRGB(178, 255, 190), Color3.fromRGB(0, 0, 0), "rbxassetid://57254792", "Sine")
 
 --[[guardnotify | Dev | Notification UI Lib., 2024-03-08]]
-
