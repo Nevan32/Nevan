@@ -138,6 +138,7 @@ WalkspeedSection:NewButton("WALKSPEED 16", "Ubah Walkspeed", function()
 game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
 end) 
 
+
 local ScreenGui = Instance.new("ScreenGui")
 ScreenGui.Name = "ScreenGui"
 ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
