@@ -95,7 +95,7 @@ local Tab = Window:NewTab("Walkspeed")
 local WalkspeedSection = Tab:NewSection("Tempat Atur")
 local WalkspeedSection = Tab:NewSection("Walkspeed Manual")
 local WalkspeedSection = Tab:NewSection("Dan Untuk")
-local WalkspeedSection = Tab:NewSection("Rata2 Walkspeed")
+local WalkspeedSection = Tab:NewSection("Rata-rata Walkspeed")
 local WalkspeedSection = Tab:NewSection("Normal Adalah 16")
 
 WalkspeedSection:NewButton("WALKSPEED 30", "Ubah Walkspeed", function()
