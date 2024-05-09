@@ -122,33 +122,18 @@ STKSection:NewButton("WALKSPEED 20", "Ubah Walkspeed", function()
 game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 20
 end) 
 
+STKSection:NewButton("WALKSPEED 19", "Ubah Walkspeed", function()
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 19
+end) 
 
-local ScreenGui = Instance.new("ScreenGui")
-ScreenGui.Name = "ScreenGui"
-ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-ScreenGui.ResetOnSpawn = false
- 
-local Toggle = Instance.new("TextButton")
-Toggle.Name = "Toggle"
-Toggle.Parent = ScreenGui
-Toggle.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-Toggle.Position = UDim2.new(0, 0, 0.454706937, 0)
-Toggle.Size = UDim2.new(0, 90, 0, 38)
-Toggle.Font = Enum.Font.SourceSans
-Toggle.Text = "Toogle"
-Toggle.TextColor3 = Color3.fromRGB(248, 248, 248)
-Toggle.TextSize = 28.000
-Toggle.Draggable = true
-Toggle.MouseButton1Click:connect(function()
-    Library:ToggleUI()
-end)
- 
-local Corner = Instance.new("UICorner")
-Corner.Name = "Corner"
-Corner.Parent = Toggle
- 
-loadstring(game:HttpGetAsync("https://guard.lol/scripts/guardnotify.lua"))("https://guard.lol")
---[[The order is: titletext, maintext, time it takes, guicolor, titletextcolor, maintextcolor, linecolor, image, and easing style. If you want to remove something, just remove it from the END not from the middle.]] 
-guardNotify("NevanHub","Tq Udh Pake Script gw hehe", 5, Color3.fromRGB(49, 55, 66), Color3.fromRGB(255, 102, 88), Color3.fromRGB(178, 255, 190), Color3.fromRGB(0, 0, 0), "rbxassetid://57254792", "Sine")
+STKSection:NewButton("WALKSPEED 18", "Ubah Walkspeed", function()
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 18
+end) 
 
---[[guardnotify | Dev | Notification UI Lib., 2024-03-08]]
+STKSection:NewButton("WALKSPEED 17", "Ubah Walkspeed", function()
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 17
+end) 
+
+STKSection:NewButton("WALKSPEED 16", "Ubah Walkspeed", function()
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
+end) 
