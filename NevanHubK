@@ -161,9 +161,11 @@ end)
 local Corner = Instance.new("UICorner")
 Corner.Name = "Corner"
 Corner.Parent = Toggle
- 
-loadstring(game:HttpGetAsync("https://guard.lol/scripts/guardnotify.lua"))("https://guard.lol")
---[[The order is: titletext, maintext, time it takes, guicolor, titletextcolor, maintextcolor, linecolor, image, and easing style. If you want to remove something, just remove it from the END not from the middle.]] 
-guardNotify("NevanHub","Tq Udh Pake Script gw hehe", 5, Color3.fromRGB(49, 55, 66), Color3.fromRGB(255, 102, 88), Color3.fromRGB(178, 255, 190), Color3.fromRGB(0, 0, 0), "rbxassetid://57254792", "Sine")
 
---[[guardnotify | Dev | Notification UI Lib., 2024-03-08]]
+local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kinlei/Dynissimo/main/Scripts/AkaliNotif.lua"))();
+local Notify = AkaliNotif.Notify;
+Notify({
+Description = "Makasih udah pake script gw 🗿";
+Title = "NevanHub";
+Duration = 15;
+});
