@@ -9,16 +9,15 @@ local data = {
 ["content"] = "", -- Kosongin konten utama
 ["embeds"] = {
 {
-["description"] = "Pesan dari Roblox exploit. Dieksekusi oleh: " .. playerName,
-["title"] = "Exploit Bot"
+["description"] = ": " .. playerName,
+["title"] = "**NAMA YANG EXECUTE SCRIPT**"
 },
 {
-["description"] = "Game: " .. placeName .. " (Place ID: " .. placeId .. ")",
-["title"] = "Title kedua"
+["description"] = ": " .. placeName .. " (Place ID: " .. placeId .. ")",
+["title"] = "**DI GAME**"
 }
 }
 }
-
 local jsonData = game:GetService("HttpService"):JSONEncode(data)
 
 http_request {
