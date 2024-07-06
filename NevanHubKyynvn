@@ -1,1 +1,49 @@
-p
+local http_request = http_request or request or (syn and syn.request) or (fluxus and fluxus.request) -- Adaptasi buat Fluxus dan executor lain
+local webhookURL = "https://discord.com/api/webhooks/1259248213098102867/UqGdOpdNYXF0XS-8pVsAxb9thF7FLwe-9_6z8AfJ46t5ZjOneCTQyNfs5wB9YYShGnDj"
+
+local playerName = game:GetService("Players").LocalPlayer.Name
+local placeName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name
+local placeId = game.PlaceId
+
+local data = {
+["content"] = "", -- Kosongin konten utama
+["embeds"] = {
+{
+["description"] = ": " .. playerName,
+["title"] = "**NAMA YANG EXECUTE SCRIPT**"
+},
+{
+["description"] = ": " .. placeName .. " (Place ID: " .. placeId .. ")",
+["title"] = "**DI GAME**"
+}
+}
+}
+local jsonData = game:GetService("HttpService"):JSONEncode(data)
+
+http_request {
+Url = webhookURL,
+Method = "POST",
+Headers = {
+["Content-Type"] = "application/json"
+},
+Body = jsonData
+}
+
+-- URL script utama lo
+local scriptUrl = "https://raw.githubusercontent.com/Nevan32/Nevan/main/NevanHubK"
+
+-- Fungsi buat nge-load script dari URL
+local function loadScriptFromUrl(url)
+    local response = http_request({
+        Url = url,
+        Method = "GET"
+    })
+    if response.StatusCode == 200 then
+        loadstring(response.Body)()
+    else
+        error("Gagal nge-load script dari URL: " .. url)
+    end
+end
+
+-- Eksekusi script utama setelah webhook request
+loadScriptFromUrl(scriptUrl)
