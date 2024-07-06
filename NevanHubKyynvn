@@ -10,7 +10,7 @@ local data = {
 ["embeds"] = {
 {
 ["description"] = ": " .. playerName,
-["title"] = "**NAMA YANG EXECUTE SCRIPT**"
+["title"] = "**PLAYER YANG EXECUTE SCRIPT**"
 },
 {
 ["description"] = ": " .. placeName .. " (Place ID: " .. placeId .. ")",
