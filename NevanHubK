@@ -167,5 +167,5 @@ local Notify = AkaliNotif.Notify;
 Notify({
 Description = "Makasih udah pake script gw 🗿";
 Title = "NevanHub";
-Duration = 15;
+Duration = 10;
 });
