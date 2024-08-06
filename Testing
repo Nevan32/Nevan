@@ -16,13 +16,39 @@ MainSection:NewButton("Hitbox", "Request Dari Chiki", function()
 loadstring(game:HttpGet(("https://raw.githubusercontent.com/Nevan32/Nevan/main/Hitbox"),true))()
 end)
 
-MainSection:NewSlider("Hitbox Size", "Ganti ukuran hitbox", 100, 1, function(size) -- 100 (MaxValue) | 1 (MinValue)
-local player = game.Players.LocalPlayer
-local character = player.Character
+MainSection:NewSlider("Hitbox Size", "Atur ukuran hitbox", 500, 0, function(s)
+    HeadSize = s
+end)
 
-if character and character:FindFirstChild("HumanoidRootPart") then
-    character.HumanoidRootPart.Size = Vector3.new(size, size, size)
-    character.HumanoidRootPart.Transparency = 0.7 -- Buat hitbox lebih keliatan
-    character.HumanoidRootPart.BrickColor = BrickColor.new("Bright red") -- Tentuin warna hitbox
+-- Variabel
+local HeadSize = 20
+local IsDisabled = true
+local IsTeamCheckEnabled = false
+
+-- Fungsi buat update hitbox
+local function updateHitbox()
+    local localPlayer = game:GetService('Players').LocalPlayer
+    if not localPlayer then return end
+
+    local localPlayerTeam = localPlayer.Team
+
+    for _, player in ipairs(game:GetService('Players'):GetPlayers()) do
+        if player ~= localPlayer and (not IsTeamCheckEnabled or player.Team ~= localPlayerTeam) then
+            local humanoidRootPart = player.Character and player.Character:FindFirstChild("HumanoidRootPart")
+            if humanoidRootPart then
+                humanoidRootPart.Size = Vector3.new(HeadSize, HeadSize, HeadSize)
+                humanoidRootPart.Transparency = 0.7
+                humanoidRootPart.BrickColor = BrickColor.new("Really blue")
+                humanoidRootPart.Material = Enum.Material.Neon
+                humanoidRootPart.CanCollide = false
+            end
+        end
+    end
 end
+
+-- Hubungkan ke RenderStepped
+game:GetService('RunService').RenderStepped:Connect(function()
+    if not IsDisabled then
+        updateHitbox()
+    end
 end)
