@@ -180,6 +180,48 @@ MainSection:NewTextBox("Masukkan saran di sini!", "Masukkan saran di sini!", fun
     sendToWebhook(txt)
 end)
 
+-- MAIN
+local Tab = Window:NewTab("Report Bug")
+local MainSection = Tab:NewSection("Melapor Bug")
+
+MainSection:NewTextBox("Masukkan laporan bug di sini!", "Masukkan laporan bug di sini!", function(txt)
+    local HttpService = game:GetService("HttpService")
+    local Players = game:GetService("Players")
+    local playerName = Players.LocalPlayer.Name
+    local WebhookURL = "https://discord.com/api/webhooks/1271096325542510622/CMaUPrDQUViyCt0XHot34x118DQJzeDvhIDx7S5OQwYVDgyQYZqsjdOoxBaz9cSHMBVm"
+
+    local function sendToWebhook(message)
+        local requestData = HttpService:JSONEncode({
+            ["username"] = playerName,
+            ["content"] = message
+        })
+
+        local headers = {
+            ["Content-Type"] = "application/json"
+        }
+
+        local httpRequest = (syn and syn.request) or (http and http.request) or (fluxus and fluxus.request) or request
+
+        if httpRequest then
+            local success, response = pcall(httpRequest, {
+                Url = WebhookURL,
+                Method = "POST",
+                Headers = headers,
+                Body = requestData
+            })
+            if success and response.StatusCode == 200 then
+                print("Message sent successfully")
+            else
+                error("Failed to send message: " .. (response and response.StatusMessage or "Unknown error"))
+            end
+        else
+            error("Your exploit does not support HTTP requests.")
+        end
+    end
+
+    sendToWebhook(txt)
+end)
+
 local ScreenGui = Instance.new("ScreenGui")
 ScreenGui.Name = "ScreenGui"
 ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
