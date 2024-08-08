@@ -12,43 +12,42 @@ local Tab = Window:NewTab("Main")
 local MainSection = Tab:NewSection("Main")
 
 
-MainSection:NewButton("Hitbox", "Request Dari Chiki", function()
-loadstring(game:HttpGet(("https://raw.githubusercontent.com/Nevan32/Nevan/main/Hitbox"),true))()
+MainSection:NewTextBox("Report Bug", "Tulis bug yang ditemui", function(txt)
+sendReport(txt)
+print("Pesan report terkirim: " .. txt)
 end)
 
-MainSection:NewSlider("Hitbox Size", "Atur ukuran hitbox", 500, 0, function(s)
-    HeadSize = s
-end)
+local http_request = http_request or request or (syn and syn.request) or (fluxus and fluxus.request)
+local webhookURL = "WEBHOOK_URL"
 
--- Variabel
-local HeadSize = 20
-local IsDisabled = true
-local IsTeamCheckEnabled = false
+local function sendReport(message)
+  local playerName = game:GetService("Players").LocalPlayer.Name
+  local placeName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name
+  local placeId = game.PlaceId
+  local data = {
+    ["content"] = "",
+    ["embeds"] = {
+      {
+        ["description"] = "Report dari " .. playerName,
+        ["title"] = "Laporan Bug"
+      },
+      {
+        ["description"] = "Game: " .. placeName .. " (Place ID: " .. placeId .. ")
 
--- Fungsi buat update hitbox
-local function updateHitbox()
-    local localPlayer = game:GetService('Players').LocalPlayer
-    if not localPlayer then return end
+" .. message,
+        ["title"] = "Detail Bug"
+      }
+    }
+  }
 
-    local localPlayerTeam = localPlayer.Team
+  local jsonData = game:GetService("HttpService"):JSONEncode(data)
 
-    for _, player in ipairs(game:GetService('Players'):GetPlayers()) do
-        if player ~= localPlayer and (not IsTeamCheckEnabled or player.Team ~= localPlayerTeam) then
-            local humanoidRootPart = player.Character and player.Character:FindFirstChild("HumanoidRootPart")
-            if humanoidRootPart then
-                humanoidRootPart.Size = Vector3.new(HeadSize, HeadSize, HeadSize)
-                humanoidRootPart.Transparency = 0.7
-                humanoidRootPart.BrickColor = BrickColor.new("Really blue")
-                humanoidRootPart.Material = Enum.Material.Neon
-                humanoidRootPart.CanCollide = false
-            end
-        end
-    end
+  http_request({
+    Url = webhookURL,
+    Method = "POST",
+    Headers = {
+      ["Content-Type"] = "application/json"
+    },
+    Body = jsonData
+  })
 end
-
--- Hubungkan ke RenderStepped
-game:GetService('RunService').RenderStepped:Connect(function()
-    if not IsDisabled then
-        updateHitbox()
-    end
-end)
