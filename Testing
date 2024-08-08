@@ -11,7 +11,7 @@ local InfoSection = Tab:NewSection("BISA PAKE TOOGLE DI SC INI")
 local Tab = Window:NewTab("Report Bug")
 local MainSection = Tab:NewSection("Melapor Bug")
 
-MainSection:NewTextBox("Laporan Bug", "Masukkan laporan bug di sini!", function(txt)
+MainSection:NewTextBox("Masukkan laporan bug di sini!", "Masukkan laporan bug di sini!", function(txt)
     local HttpService = game:GetService("HttpService")
     local Players = game:GetService("Players")
     local playerName = Players.LocalPlayer.Name
