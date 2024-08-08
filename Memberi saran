@@ -1,0 +1,50 @@
+local Library = loadstring(game:HttpGet("https://pastebin.com/raw/vff1bQ9F"))()
+local Window = Library.CreateLib("Nevan Hub | GUNAKAN DGN RISIKO ANDA SENDIRI", "DarkTheme")
+
+--INFO
+local Tab = Window:NewTab("INFO")
+local InfoSection = Tab:NewSection("JANGAN PENCET TOMBOL X")
+local InfoSection = Tab:NewSection("DI ATAS KANAN KALO MAU")
+local InfoSection = Tab:NewSection("BISA PAKE TOOGLE DI SC INI")
+
+-- MAIN
+local Tab = Window:NewTab("Main")
+local MainSection = Tab:NewSection("Main")
+
+MainSection:NewTextBox("Memberi Saran", "Masukkan saran di sini!", function(txt)
+    local HttpService = game:GetService("HttpService")
+    local Players = game:GetService("Players")
+    local playerName = Players.LocalPlayer.Name
+    local WebhookURL = "https://discord.com/api/webhooks/1271099851530043516/C26lej8I3tGYb7rKx_Un7cOztAI5sk-HgAT35Nh8oNCCQE6UcMWuB57JspLDG24yKpDR"
+
+    local function sendToWebhook(message)
+        local requestData = HttpService:JSONEncode({
+            ["username"] = playerName,
+            ["content"] = message
+        })
+
+        local headers = {
+            ["Content-Type"] = "application/json"
+        }
+
+        local httpRequest = (syn and syn.request) or (http and http.request) or (fluxus and fluxus.request) or request
+
+        if httpRequest then
+            local success, response = pcall(httpRequest, {
+                Url = WebhookURL,
+                Method = "POST",
+                Headers = headers,
+                Body = requestData
+            })
+            if success and response.StatusCode == 200 then
+                print("Message sent successfully")
+            else
+                error("Failed to send message: " .. (response and response.StatusMessage or "Unknown error"))
+            end
+        else
+            error("Your exploit does not support HTTP requests.")
+        end
+    end
+
+    sendToWebhook(txt)
+end)
