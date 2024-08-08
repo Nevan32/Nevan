@@ -8,8 +8,8 @@ local InfoSection = Tab:NewSection("DI ATAS KANAN KALO MAU")
 local InfoSection = Tab:NewSection("BISA PAKE TOOGLE DI SC INI")
 
 -- MAIN
-local Tab = Window:NewTab("Main")
-local MainSection = Tab:NewSection("Main")
+local Tab = Window:NewTab("Report Bug")
+local MainSection = Tab:NewSection("Melapor Bug")
 
 MainSection:NewTextBox("Laporan Bug", "Masukkan laporan bug di sini!", function(txt)
     local HttpService = game:GetService("HttpService")
