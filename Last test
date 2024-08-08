@@ -1,0 +1,171 @@
+local Library = loadstring(game:HttpGet("https://pastebin.com/raw/vff1bQ9F"))()
+local Window = Library.CreateLib("Nevan Hub | GUNAKAN DGN RISIKO ANDA SENDIRI", "DarkTheme")
+
+--INFO
+local Tab = Window:NewTab("INFO")
+local InfoSection = Tab:NewSection("JANGAN PENCET TOMBOL X")
+local InfoSection = Tab:NewSection("DI ATAS KANAN KALO MAU")
+local InfoSection = Tab:NewSection("BISA PAKE TOOGLE DI SC INI")
+
+-- MAIN
+local Tab = Window:NewTab("Main")
+local MainSection = Tab:NewSection("Main")
+
+
+MainSection:NewButton("Hitbox", "Request Dari Chiki", function()
+loadstring(game:HttpGet(("https://raw.githubusercontent.com/Nevan32/Nevan/main/Hitbox"),true))()
+end)
+
+
+-- MISC
+local Tab = Window:NewTab("MISC")
+local MiscSection = Tab:NewSection("MISC")
+
+
+MiscSection:NewButton("Change Walkspeed", "Can change the movement speed as you like", function()
+loadstring(game:HttpGet(("https://pastefy.app/HHAKyQdA/raw"),true))()
+end)
+
+MiscSection:NewButton("Shiftlock", "Cocok untuk game yang gaada fitur shiftlock nya", function()
+loadstring(game:HttpGet(("https://pastefy.app/gD6JVcxL/raw"),true))()
+end)
+
+MiscSection:NewButton("Esp Tembus Pandang", "Tembus Pandang Warna Merah", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/EspRed"))()
+end)
+
+MiscSection:NewButton("Teleport Player Gui", "Sc simple nampilin Ui buat Tp ke player", function()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/Infinity2346/Tect-Menu/main/Teleport%20Gui.lua'))()
+end)
+
+-- Other
+local Tab = Window:NewTab("Other")
+local MiscSection = Tab:NewSection("Other")
+
+MiscSection:NewButton("Infinite Yield", "Command Admin", function()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+end)
+
+-- SlapBattles
+local Tab = Window:NewTab("SlapBattles")
+local TeleportSection = Tab:NewSection("Teleport | Slap Aura Di Main Yang Hitbox")
+
+TeleportSection:NewButton("Slapple Island", "Request Dari Chiki", function()
+loadstring(game:HttpGet("https://pastefy.app/X2nDCtt9/raw"))()
+end)
+
+TeleportSection:NewButton("Turnament", "Request Dari Chiki", function()
+loadstring(game:HttpGet("https://pastefy.app/CtMjNMaW/raw"))()
+end)
+
+TeleportSection:NewButton("Moai Island", "Request Dari Chiki", function()
+loadstring(game:HttpGet("https://pastefy.app/KnuBhDFZ/raw"))()
+end)
+
+TeleportSection:NewButton("Arena", "Request Dari Chiki", function()
+loadstring(game:HttpGet("https://pastefy.app/EE7KwxwP/raw"))()
+end)
+
+TeleportSection:NewButton("Lobby", "Request Dari Chiki", function()
+loadstring(game:HttpGet("https://pastefy.app/BIXGmsR7/raw"))()
+end) 
+
+TeleportSection:NewButton("Plate", "Request Dari Chiki", function()
+loadstring(game:HttpGet("https://pastefy.app/xkb3PV4u/raw"))()
+end) 
+
+-- CombatWarriors 
+local Tab = Window:NewTab("CombatWarriors")
+local CombatWarriorsSection = Tab:NewSection("CombatWarriors")
+
+CombatWarriorsSection:NewButton("AutoParry | Not 100% Accurate", "Tidak 100% Akurat/Not 100% Accurate", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/AutoParryCw"))()
+end) 
+
+CombatWarriorsSection:NewButton("Hitbox Khusus CW | Cek Desk Ini", "Butuh Keyboard Untuk Mengaktifkannya Yaitu V", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/HitboxCw"))()
+end)
+
+CombatWarriorsSection:NewButton("Keyboard Untuk Aktifkan Hitbox CW", "Cocok Buat Mobile yang gapunya PC", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/Keyboard"))()
+end) 
+
+-- STK
+local Tab = Window:NewTab("STK")
+local STKSection = Tab:NewSection("STK")
+
+STKSection:NewButton("WALKSPEED 30", "Ubah Walkspeed", function()
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 30
+end) 
+
+STKSection:NewButton("WALKSPEED 25", "Ubah Walkspeed", function()
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 25
+end) 
+
+STKSection:NewButton("WALKSPEED 24", "Ubah Walkspeed", function()
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 24
+end) 
+
+STKSection:NewButton("WALKSPEED 23", "Ubah Walkspeed", function()
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 23
+end) 
+
+STKSection:NewButton("WALKSPEED 22", "Ubah Walkspeed", function()
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 22
+end) 
+
+STKSection:NewButton("WALKSPEED 21", "Ubah Walkspeed", function()
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 21
+end) 
+
+STKSection:NewButton("WALKSPEED 20", "Ubah Walkspeed", function()
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 20
+end) 
+
+STKSection:NewButton("WALKSPEED 19", "Ubah Walkspeed", function()
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 19
+end) 
+
+STKSection:NewButton("WALKSPEED 18", "Ubah Walkspeed", function()
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 18
+end) 
+
+STKSection:NewButton("WALKSPEED 17", "Ubah Walkspeed", function()
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 17
+end) 
+
+STKSection:NewButton("WALKSPEED 16", "Ubah Walkspeed", function()
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
+end) 
+
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Name = "ScreenGui"
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ResetOnSpawn = false
+ 
+local Toggle = Instance.new("TextButton")
+Toggle.Name = "Toggle"
+Toggle.Parent = ScreenGui
+Toggle.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Toggle.Position = UDim2.new(0, 0, 0.454706937, 0)
+Toggle.Size = UDim2.new(0, 90, 0, 38)
+Toggle.Font = Enum.Font.SourceSans
+Toggle.Text = "Toogle"
+Toggle.TextColor3 = Color3.fromRGB(248, 248, 248)
+Toggle.TextSize = 28.000
+Toggle.Draggable = true
+Toggle.MouseButton1Click:connect(function()
+    Library:ToggleUI()
+end)
+ 
+local Corner = Instance.new("UICorner")
+Corner.Name = "Corner"
+Corner.Parent = Toggle
+
+local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kinlei/Dynissimo/main/Scripts/AkaliNotif.lua"))();
+local Notify = AkaliNotif.Notify;
+Notify({
+Description = "Makasih udah pake script gw 🗿";
+Title = "NevanHub";
+Duration = 10;
+});
