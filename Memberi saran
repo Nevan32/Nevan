@@ -8,10 +8,10 @@ local InfoSection = Tab:NewSection("DI ATAS KANAN KALO MAU")
 local InfoSection = Tab:NewSection("BISA PAKE TOOGLE DI SC INI")
 
 -- MAIN
-local Tab = Window:NewTab("Main")
-local MainSection = Tab:NewSection("Main")
+local Tab = Window:NewTab("Memberi Saran")
+local MainSection = Tab:NewSection("Saran")
 
-MainSection:NewTextBox("Memberi Saran", "Masukkan saran di sini!", function(txt)
+MainSection:NewTextBox("Masukkan saran di sini!", "Masukkan saran di sini!", function(txt)
     local HttpService = game:GetService("HttpService")
     local Players = game:GetService("Players")
     local playerName = Players.LocalPlayer.Name
