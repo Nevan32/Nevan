@@ -51,27 +51,27 @@ local Tab = Window:NewTab("SlapBattles")
 local TeleportSection = Tab:NewSection("Teleport | Slap Aura Di Main Yang Hitbox")
 
 TeleportSection:NewButton("Slapple Island", "Request Dari Chiki", function()
-loadstring(game:HttpGet("https://pastefy.app/X2nDCtt9/raw"))()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Arena.island5.Union.CFrame * CFrame.new(0,3.25,0)
 end)
 
 TeleportSection:NewButton("Turnament", "Request Dari Chiki", function()
-loadstring(game:HttpGet("https://pastefy.app/CtMjNMaW/raw"))()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Battlearena.Arena.CFrame * CFrame.new(0,10,0)
 end)
 
 TeleportSection:NewButton("Moai Island", "Request Dari Chiki", function()
-loadstring(game:HttpGet("https://pastefy.app/KnuBhDFZ/raw"))()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(215, -15.5, 0.5)
 end)
 
 TeleportSection:NewButton("Arena", "Request Dari Chiki", function()
-loadstring(game:HttpGet("https://pastefy.app/EE7KwxwP/raw"))()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Origo.CFrame * CFrame.new(0,-5,0)
 end)
 
 TeleportSection:NewButton("Lobby", "Request Dari Chiki", function()
-loadstring(game:HttpGet("https://pastefy.app/BIXGmsR7/raw"))()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-800,328,-2.5)
 end) 
 
 TeleportSection:NewButton("Plate", "Request Dari Chiki", function()
-loadstring(game:HttpGet("https://pastefy.app/xkb3PV4u/raw"))()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Arena.Plate.CFrame * CFrame.new(0,2,0)
 end) 
 
 -- CombatWarriors 
