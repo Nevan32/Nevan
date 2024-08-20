@@ -74,6 +74,10 @@ TeleportSection:NewButton("Plate", "Request Dari Chiki", function()
 loadstring(game:HttpGet("https://pastefy.app/xkb3PV4u/raw"))()
 end) 
 
+TeleportSection:NewButton("Castle", "Request Dari Chiki", function()
+loadstring(game:HttpGet("https://pastefy.app/xkb3PV4u/raw"))()
+end) 
+
 -- CombatWarriors 
 local Tab = Window:NewTab("CombatWarriors")
 local CombatWarriorsSection = Tab:NewSection("CombatWarriors")
