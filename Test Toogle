@@ -14,37 +14,6 @@ local MainSection = Tab:NewSection("Main")
 MainSection:NewToggle("NoClip", "Nembus Dinding", function(state)
     if state then
         print("Toggle On")
-local Player = game.Players.LocalPlayer
-local Character = Player.Character or Player.CharacterAdded:Wait()
-local Humanoid = Character:FindFirstChildWhichIsA("Humanoid")
-local noclip = true
-
-function NoclipLoop()
-    if noclip then
-        for _, part in pairs(Character:GetDescendants()) do
-            if part:IsA("BasePart") and part.CanCollide then
-                part.CanCollide = false
-            end
-        end
-    end
-end
-
-game:GetService("RunService").Stepped:Connect(NoclipLoop)
-
--- Toggle Noclip with a key, e.g., "N"
-local UserInputService = game:GetService("UserInputService")
-UserInputService.InputBegan:Connect(function(input)
-    if input.KeyCode == Enum.KeyCode.N then
-        noclip = not noclip
-        if not noclip then
-            for _, part in pairs(Character:GetDescendants()) do
-                if part:IsA("BasePart") and not part.CanCollide then
-                    part.CanCollide = true
-                end
-            end
-        end
-    end
-end)
     else
         print("Toggle Off")
 -- Trigger key press "N" once executed
