@@ -57,5 +57,5 @@ virtualUser:CaptureController()
 virtualUser:SetKeyDown(Enum.KeyCode.N)
 wait(0.2) -- Jeda setengah detik
 virtualUser:SetKeyUp(Enum.KeyCode.N)
-    end
+    end)
 end)
