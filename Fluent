@@ -64,13 +64,29 @@ do
 
 
 
-    local Toggle = Tabs.Main:AddToggle("MyToggle", {Title = "Toggle", Default = false })
+    local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
 
-    Toggle:OnChanged(function()
-        print("Toggle changed:", Options.MyToggle.Value)
-    end)
+-- Fungsi untuk mengaktifkan atau menonaktifkan NoClip
+local function setNoClip(enabled)
+    for _, part in pairs(character:GetDescendants()) do
+        if part:IsA("BasePart") then
+            part.CanCollide = not enabled -- Jika NoClip aktif, nonaktifkan kolisi
+        end
+    end
+end
 
-    Options.MyToggle:SetValue(false)
+-- Menghubungkan dengan Toggle
+local Toggle = Tabs.Main:AddToggle("MyToggle", {Title = "Toggle", Default = false })
+
+Toggle:OnChanged(function()
+    local noClipEnabled = Options.MyToggle.Value
+    print("Toggle changed:", noClipEnabled)
+    setNoClip(noClipEnabled) -- Mengaktifkan atau menonaktifkan NoClip berdasarkan nilai toggle
+end)
+
+-- Opsi untuk mengatur nilai awal toggle
+Options.MyToggle:SetValue(false)
 
 
     
