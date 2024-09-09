@@ -257,3 +257,9 @@ Description = "Makasih udah pake script gw 🗿";
 Title = "NevanHub";
 Duration = 10;
 });
+
+
+while true do
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/Ngecek"))()
+    wait(3) -- Jeda 3 detik sebelum mengulang
+end
