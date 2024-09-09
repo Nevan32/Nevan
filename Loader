@@ -76,3 +76,4 @@ end
 
 -- Start the loading animation
 spawn(animateLoadingBar)
+
