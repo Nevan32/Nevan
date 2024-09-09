@@ -7,7 +7,8 @@ local run = game:GetService("RunService")
 
 local Utility = {}
 local Objects = {}
-function Kavo:DraggingEnabled(frame, parent)
+-- Fungsi Drag untuk PC
+function Kavo:DraggingEnabledPC(frame, parent)
     parent = parent or frame
     
     local dragging = false
@@ -41,20 +42,19 @@ function Kavo:DraggingEnabled(frame, parent)
     end)
 end
 
-function Kavo:DraggingEnabled(frame, parent)
-        
+-- Fungsi Drag untuk Android
+function Kavo:DraggingEnabledTouch(frame, parent)
     parent = parent or frame
     
-    -- stolen from wally or kiriot, kek
     local dragging = false
-    local dragInput, mousePos, framePos
+    local dragInput, startPos, framePos
 
     frame.InputBegan:Connect(function(input)
-        if input.UserInputType == Enum.UserInputType.MouseButton1 then
+        if input.UserInputType == Enum.UserInputType.Touch then
             dragging = true
-            mousePos = input.Position
+            startPos = input.Position
             framePos = parent.Position
-            
+
             input.Changed:Connect(function()
                 if input.UserInputState == Enum.UserInputState.End then
                     dragging = false
@@ -64,18 +64,31 @@ function Kavo:DraggingEnabled(frame, parent)
     end)
 
     frame.InputChanged:Connect(function(input)
-        if input.UserInputType == Enum.UserInputType.MouseMovement then
+        if input.UserInputType == Enum.UserInputType.Touch then
             dragInput = input
         end
     end)
 
     input.InputChanged:Connect(function(input)
         if input == dragInput and dragging then
-            local delta = input.Position - mousePos
-            parent.Position  = UDim2.new(framePos.X.Scale, framePos.X.Offset + delta.X, framePos.Y.Scale, framePos.Y.Offset + delta.Y)
+            local delta = input.Position - startPos
+            parent.Position = UDim2.new(
+                framePos.X.Scale, framePos.X.Offset + delta.X,
+                framePos.Y.Scale, framePos.Y.Offset + delta.Y
+            )
         end
     end)
 end
+
+-- Deteksi perangkat dan pilih fungsi yang sesuai
+function Kavo:DraggingEnabled(frame, parent)
+    if input.TouchEnabled then
+        self:DraggingEnabledTouch(frame, parent)  -- Untuk Android
+    else
+        self:DraggingEnabledPC(frame, parent)     -- Untuk PC
+    end
+end
+
 
 function Utility:TweenObject(obj, properties, duration, ...)
     tween:Create(obj, tweeninfo(duration, ...), properties):Play()
