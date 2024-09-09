@@ -1,0 +1,95 @@
+-- Create a ScreenGui
+local speedGui = Instance.new("ScreenGui")
+speedGui.Parent = game.Players.LocalPlayer.PlayerGui
+
+-- Variable to track GUI state
+local isGuiOpen = false
+
+-- Function to create the GUI
+local function createGui()
+    -- Create a Frame to hold UI elements
+    local frame = Instance.new("Frame")
+    frame.Size = UDim2.new(0, 200, 0, 150)
+    frame.Position = UDim2.new(0.5, -100, 0.5, -75)
+    frame.BackgroundTransparency = 0.5
+    frame.BackgroundColor3 = Color3.new(0, 0, 0)
+    frame.Parent = speedGui
+
+    -- Create a TextBox for speed input
+    local speedTextBox = Instance.new("TextBox")
+    speedTextBox.Size = UDim2.new(0, 180, 0, 30)
+    speedTextBox.Position = UDim2.new(0.5, -90, 0, 10)
+    speedTextBox.PlaceholderText = "Enter speed..."
+    speedTextBox.Parent = frame
+
+    -- Create a TextButton to apply the speed change
+    local applyButton = Instance.new("TextButton")
+    applyButton.Size = UDim2.new(0, 180, 0, 30)
+    applyButton.Position = UDim2.new(0.5, -90, 0, 60)
+    applyButton.Text = "Apply Speed"
+    applyButton.Parent = frame
+
+    -- Display current speed information
+    local currentSpeedText = Instance.new("TextLabel")
+    currentSpeedText.Size = UDim2.new(0, 180, 0, 30)
+    currentSpeedText.Position = UDim2.new(0.5, -90, 0, 100)
+    currentSpeedText.Text = "Your normal speed is " .. game.Players.LocalPlayer.Character.Humanoid.WalkSpeed
+    currentSpeedText.TextWrapped = true
+    currentSpeedText.Parent = frame
+
+    -- Added text information "Made By Raya"
+    local madeByText = Instance.new("TextLabel")
+    madeByText.Size = UDim2.new(0, 180, 0, 20)
+    madeByText.Position = UDim2.new(0.5, -90, 0, 130)
+    madeByText.Text = "Made By Raya"
+    madeByText.Parent = frame
+
+    -- Create a TextButton to close the GUI
+    local closeButton = Instance.new("TextButton")
+    closeButton.Size = UDim2.new(0, 50, 0, 30)
+    closeButton.Position = UDim2.new(1, -50, 0, 0)
+    closeButton.Text = "Close"
+    closeButton.Parent = frame
+
+    -- Function to change player speed
+    local function changeSpeed()
+        local newSpeed = tonumber(speedTextBox.Text)
+
+        -- Check if the input is a valid number
+        if newSpeed then
+            game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = newSpeed
+            currentSpeedText.Text = "Your current speed is " .. newSpeed
+        else
+            currentSpeedText.Text = "Invalid speed input."
+        end
+    end
+
+    -- Function to close the GUI
+    local function closeGui()
+        frame:Destroy()
+        isGuiOpen = false
+    end
+
+    -- Connect functions to button click events
+    applyButton.MouseButton1Click:Connect(changeSpeed)
+    closeButton.MouseButton1Click:Connect(closeGui)
+end
+
+-- Function to toggle GUI state
+local function toggleGui()
+    if not isGuiOpen then
+        -- GUI is closed, open it
+        createGui()
+        isGuiOpen = true
+    end
+end
+
+-- Create a TextButton to toggle the GUI
+local toggleButton = Instance.new("TextButton")
+toggleButton.Size = UDim2.new(0, 80, 0, 30)
+toggleButton.Position = UDim2.new(0, 10, 0, 10)
+toggleButton.Text = "Toggle GUI"
+toggleButton.Parent = speedGui
+
+-- Connect function to button click event
+toggleButton.MouseButton1Click:Connect(toggleGui)
