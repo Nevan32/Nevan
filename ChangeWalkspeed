@@ -1,3 +1,10 @@
+local player = game.Players.LocalPlayer
+local ui = script.Parent
+
+player.CharacterAdded:Connect(function(character)
+    ui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+end)
+
 -- Create a ScreenGui
 local speedGui = Instance.new("ScreenGui")
 speedGui.Parent = game.Players.LocalPlayer.PlayerGui
