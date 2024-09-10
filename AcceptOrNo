@@ -10,7 +10,7 @@ function createUI()
     local textLabel = Instance.new("TextLabel")
     textLabel.Size = UDim2.new(1, 0, 0.6, 0)
     textLabel.Position = UDim2.new(0, 0, 0, 0)
-    textLabel.Text = "Apakah Anda menerima?"
+    textLabel.Text = "Apakah Anda mau skip loading?"
     textLabel.TextColor3 = Color3.new(1, 1, 1)
     textLabel.BackgroundTransparency = 1
     textLabel.Parent = frame
@@ -18,13 +18,13 @@ function createUI()
     local acceptButton = Instance.new("TextButton")
     acceptButton.Size = UDim2.new(0.4, 0, 0.2, 0)
     acceptButton.Position = UDim2.new(0.1, 0, 0.7, 0)
-    acceptButton.Text = "Accept"
+    acceptButton.Text = "Tentu"
     acceptButton.Parent = frame
 
     local noButton = Instance.new("TextButton")
     noButton.Size = UDim2.new(0.4, 0, 0.2, 0)
     noButton.Position = UDim2.new(0.5, 0, 0.7, 0)
-    noButton.Text = "No"
+    noButton.Text = "Gak"
     noButton.Parent = frame
 
     local function destroyUI()
