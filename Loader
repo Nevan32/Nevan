@@ -58,7 +58,7 @@ function animateLoadingBar()
     while progress < 100 do
         progress = progress + 1
         updateProgress(progress)
-        wait(0.03) -- Adjust the animation speed as needed
+        wait(0.01) -- Adjust the animation speed as needed
     end
 
     loadingText.Text = "Successfully Loaded"
