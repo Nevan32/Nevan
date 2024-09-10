@@ -32,12 +32,12 @@ function createUI()
     end
 
     acceptButton.MouseButton1Click:Connect(function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/NevanHubK"))()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/Accept"))()
         destroyUI()
     end)
 
     noButton.MouseButton1Click:Connect(function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/Loader"))()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/Tidak"))()
         destroyUI()
     end)
 end
