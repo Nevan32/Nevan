@@ -6,6 +6,10 @@ local Tab = Window:NewTab("INFO")
 local InfoSection = Tab:NewSection("JANGAN PENCET TOMBOL X")
 local InfoSection = Tab:NewSection("DI ATAS KANAN KALO MAU")
 local InfoSection = Tab:NewSection("BISA PAKE TOOGLE DI SC INI")
+local InfoSection = Tab:NewSection("VERSI 10.2")
+local InfoSection = Tab:NewSection("UPDATE 10.2")
+local InfoSection = Tab:NewSection("-REMOVED LOADING")
+local InfoSection = Tab:NewSection("COMING SOON UPDATE 10.5")
 
 
 
