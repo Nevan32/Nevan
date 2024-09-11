@@ -1,0 +1,26 @@
+-- Anti-Ragdoll Script for Slap Battles
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+local Character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
+
+function disableRagdoll()
+    for _, v in pairs(Character:GetDescendants()) do
+        if v:IsA("BodyVelocity") or v:IsA("BodyAngularVelocity") then
+            v:Destroy()
+        elseif v:IsA("Humanoid") then
+            v.PlatformStand = false
+        end
+    end
+end
+
+-- Run the disable function periodically
+while true do
+    disableRagdoll()
+    wait(0.1) -- Adjust this value based on performance
+end
+
+-- Re-apply the script whenever the character respawns
+LocalPlayer.CharacterAdded:Connect(function(char)
+    Character = char
+    disableRagdoll()
+end)
