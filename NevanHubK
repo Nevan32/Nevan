@@ -10,6 +10,7 @@ local InfoSection = Tab:NewSection("BISA PAKE TOOGLE DI SC INI")
 local InfoSection = Tab:NewSection("WHAT'S NEW IN 10.2?")
 local InfoSection = Tab:NewSection("-REMOVED LOADING")
 local InfoSection = Tab:NewSection("COMING SOON UPDATE 10.5")
+local InfoSection = Tab:NewSection("THANK YOU FOR READING")
 
 
 
