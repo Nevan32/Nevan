@@ -1,4 +1,4 @@
--- Advanced Anti-Ragdoll Script for Slap Battles
+-- Advanced Anti-Ragdoll Script For Slap Battles
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
 local LocalPlayer = Players.LocalPlayer
