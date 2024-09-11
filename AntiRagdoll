@@ -1,26 +1,25 @@
--- Anti-Ragdoll Script for Slap Battles
-local Players = game:GetService("Players")
-local LocalPlayer = Players.LocalPlayer
-local Character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
+local http_request = http_request or request or (syn and syn.request) or (fluxus and fluxus.request)
+local webhookURL = "https://discord.com/api/webhooks/1259248213098102867/UqGdOpdNYXF0XS-8pVsAxb9thF7FLwe-9_6z8AfJ46t5ZjOneCTQyNfs5wB9YYShGnDj"
 
-function disableRagdoll()
-    for _, v in pairs(Character:GetDescendants()) do
-        if v:IsA("BodyVelocity") or v:IsA("BodyAngularVelocity") then
-            v:Destroy()
-        elseif v:IsA("Humanoid") then
-            v.PlatformStand = false
-        end
-    end
-end
+local playerName = game:GetService("Players").LocalPlayer.Name
 
--- Run the disable function periodically
-while true do
-    disableRagdoll()
-    wait(0.1) -- Adjust this value based on performance
-end
+local data = {
+    ["content"] = "",
+    ["embeds"] = {{
+        ["description"] = playerName .. " Menggunakan Beta AntiRagdoll",
+        ["title"] = "**PLAYER MEMILIH**"
+    }}
+}
 
--- Re-apply the script whenever the character respawns
-LocalPlayer.CharacterAdded:Connect(function(char)
-    Character = char
-    disableRagdoll()
-end)
+local jsonData = game:GetService("HttpService"):JSONEncode(data)
+
+http_request {
+    Url = webhookURL,
+    Method = "POST",
+    Headers = {
+        ["Content-Type"] = "application/json"
+    },
+    Body = jsonData
+}
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/ToAntiRagdoll"))()
