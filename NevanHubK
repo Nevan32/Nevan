@@ -8,6 +8,7 @@ local InfoSection = Tab:NewSection("JANGAN PENCET TOMBOL X")
 local InfoSection = Tab:NewSection("DI ATAS KANAN KALO MAU")
 local InfoSection = Tab:NewSection("BISA PAKE TOOGLE DI SC INI")
 local InfoSection = Tab:NewSection("WHAT'S NEW IN 10.3.5?")
+local InfoSection = Tab:NewSection("-ADDED REJOINSERVER ON TAB OTHER")
 local InfoSection = Tab:NewSection("-ADDED ANTIRAGDOLL V2")
 local InfoSection = Tab:NewSection("-CHANGE NAME BETA ANTIRAGDOLL")
 local InfoSection = Tab:NewSection("TO ANTIRAGDOLL V1")
@@ -39,17 +40,21 @@ MiscSection:NewButton("Shiftlock", "Cocok untuk game yang gaada fitur shiftlock 
 loadstring(game:HttpGet(("https://pastefy.app/gD6JVcxL/raw"),true))()
 end)
 
-MiscSection:NewButton("Esp Tembus Pandang", "Tembus Pandang Warna Merah", function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/EspRed"))()
-end)
-
 MiscSection:NewButton("Teleport Player Gui", "Sc simple nampilin Ui buat Tp ke player", function()
 loadstring(game:HttpGet('https://raw.githubusercontent.com/Infinity2346/Tect-Menu/main/Teleport%20Gui.lua'))()
+end)
+
+MiscSection:NewButton("Esp Tembus Pandang", "Tembus Pandang Warna Merah", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/EspRed"))()
 end)
 
 -- Other
 local Tab = Window:NewTab("Other")
 local MiscSection = Tab:NewSection("Other")
+
+MiscSection:NewButton("Rejoin Server", "Rejoin Server", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/RejoinServer"))()
+end)
 
 MiscSection:NewButton("Infinite Yield", "Command Admin", function()
 loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
