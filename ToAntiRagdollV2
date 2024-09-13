@@ -1,1 +1,31 @@
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
 
+local function AntiRagdoll()
+    local Character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
+    
+    -- Tunggu hingga karakter memiliki properti Ragdolled
+    local Ragdolled = Character:WaitForChild("Ragdolled", 10) -- Menunggu hingga 10 detik, bisa diubah sesuai kebutuhan
+    if Ragdolled then
+        Ragdolled.Changed:Connect(function()
+            if Ragdolled.Value == true then
+                repeat
+                    task.wait()
+                    Character:WaitForChild("HumanoidRootPart").Anchored = true
+                until Ragdolled.Value == false
+                Character.HumanoidRootPart.Anchored = false
+            end
+        end)
+    end
+end
+
+-- Pastikan script berjalan setiap kali karakter ditambahkan atau respawn
+LocalPlayer.CharacterAdded:Connect(AntiRagdoll)
+
+-- Jalankan script saat karakter sudah ada saat pertama kali script berjalan
+if LocalPlayer.Character then
+    AntiRagdoll()
+end
+
+-- Perubahan posisi dedBarrier tetap ada
+game.Workspace.dedBarrier.Position = Vector3.new(15, -17, 41.5)
