@@ -11,7 +11,7 @@ local InfoSection = Tab:NewSection("WHAT'S NEW IN 10.3.5?")
 local InfoSection = Tab:NewSection("-ADDED ANTIRAGDOLL V2")
 local InfoSection = Tab:NewSection("-CHANGE NAME BETA ANTIRAGDOLL")
 local InfoSection = Tab:NewSection("TO ANTIRAGDOLL V1")
-local InfoSection = Tab:NewSection("COMING SOON UPDATE 10.5")
+local InfoSection = Tab:NewSection("COMING SOON UPDATE")
 local InfoSection = Tab:NewSection("THANK YOU FOR READING")
 
 
