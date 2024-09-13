@@ -63,10 +63,10 @@ end)
 -- SlapBattles
 local Tab = Window:NewTab("SlapBattles")
 local TeleportSection = Tab:NewSection("Teleport | Slap Aura Di Main Yang Hitbox")
-local TeleportSection = Tab:NewSection("AntiRagdoll V1 adalah yg beta 👇")
+local TeleportSection = Tab:NewSection("Sebelumnya AntiRagdoll V1 Adalah Beta")
 
 
-TeleportSection:NewButton("AntiRagdoll V1", "Script ini tidak akan membuat anda reset", function()
+TeleportSection:NewButton("AntiRagdoll V1 | Lebih Aman", "Script ini tidak akan membuat anda reset", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/AntiRagdoll"))()
 end)
 
