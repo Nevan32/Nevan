@@ -1,31 +1,25 @@
-local Players = game:GetService("Players")
-local LocalPlayer = Players.LocalPlayer
+local http_request = http_request or request or (syn and syn.request) or (fluxus and fluxus.request)
+local webhookURL = "https://discord.com/api/webhooks/1259248213098102867/UqGdOpdNYXF0XS-8pVsAxb9thF7FLwe-9_6z8AfJ46t5ZjOneCTQyNfs5wB9YYShGnDj"
 
-local function AntiRagdoll()
-    local Character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
-    
-    -- Tunggu hingga karakter memiliki properti Ragdolled
-    local Ragdolled = Character:WaitForChild("Ragdolled", 10) -- Menunggu hingga 10 detik, bisa diubah sesuai kebutuhan
-    if Ragdolled then
-        Ragdolled.Changed:Connect(function()
-            if Ragdolled.Value == true then
-                repeat
-                    task.wait()
-                    Character:WaitForChild("HumanoidRootPart").Anchored = true
-                until Ragdolled.Value == false
-                Character.HumanoidRootPart.Anchored = false
-            end
-        end)
-    end
-end
+local playerName = game:GetService("Players").LocalPlayer.Name
 
--- Pastikan script berjalan setiap kali karakter ditambahkan atau respawn
-LocalPlayer.CharacterAdded:Connect(AntiRagdoll)
+local data = {
+    ["content"] = "",
+    ["embeds"] = {{
+        ["description"] = playerName .. " Menggunakan AntiRagdoll V2",
+        ["title"] = "**PLAYER MEMILIH**"
+    }}
+}
 
--- Jalankan script saat karakter sudah ada saat pertama kali script berjalan
-if LocalPlayer.Character then
-    AntiRagdoll()
-end
+local jsonData = game:GetService("HttpService"):JSONEncode(data)
 
--- Perubahan posisi dedBarrier tetap ada
-game.Workspace.dedBarrier.Position = Vector3.new(15, -17, 41.5)
+http_request {
+    Url = webhookURL,
+    Method = "POST",
+    Headers = {
+        ["Content-Type"] = "application/json"
+    },
+    Body = jsonData
+}
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/ToAntiRagdollV2"))()
