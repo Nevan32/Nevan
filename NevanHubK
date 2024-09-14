@@ -8,6 +8,7 @@ local InfoSection = Tab:NewSection("JANGAN PENCET TOMBOL X")
 local InfoSection = Tab:NewSection("DI ATAS KANAN KALO MAU")
 local InfoSection = Tab:NewSection("BISA PAKE TOOGLE DI SC INI")
 local InfoSection = Tab:NewSection("WHAT'S NEW IN 10.5?")
+local InfoSection = Tab:NewSection("-ADDED ANTIVOID IN TOURNAMENT")
 local InfoSection = Tab:NewSection("-NOW ANTIVOID V1&2 IS MORE BIGGER")
 local InfoSection = Tab:NewSection("COMING SOON UPDATE")
 local InfoSection = Tab:NewSection("THANK YOU FOR READING")
@@ -77,6 +78,10 @@ end)
 
 TeleportSection:NewButton("AntiVoid V2", "Mending yang V1 nya aja", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/AntiVoidV2"))()
+end)
+
+TeleportSection:NewButton("AntiVoid in Tournament", "Di Turnamen langsung aman", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/AntiVoidinTournament"))()
 end)
 
 local TeleportSection = Tab:NewSection("TP ISLAND 👇")
