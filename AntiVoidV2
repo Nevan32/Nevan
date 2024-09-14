@@ -1,0 +1,13 @@
+-- Anti Void Script for Slap Battles Arena
+
+-- Create a part to serve as the anti-void platform
+local antiVoidPart = Instance.new("Part")
+antiVoidPart.Size = Vector3.new(500, 1, 500)  -- Size of the anti-void platform
+antiVoidPart.CFrame = CFrame.new(0, -10, 0)  -- Position it slightly below the arena
+antiVoidPart.Anchored = true
+antiVoidPart.Transparency = 0.5  -- Make it slightly transparent
+antiVoidPart.CanCollide = true
+antiVoidPart.BrickColor = BrickColor.new("Bright blue")  -- Change the color as needed
+antiVoidPart.Parent = game.Workspace
+
+print("Anti Void Platform Loaded")
