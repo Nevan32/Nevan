@@ -3,12 +3,12 @@ local Window = Library.CreateLib("Nevan Hub | GUNAKAN DGN RISIKO ANDA SENDIRI", 
 
 --INFO
 local Tab = Window:NewTab("INFO")
-local InfoSection = Tab:NewSection("VERSI 10.4")
+local InfoSection = Tab:NewSection("VERSI 10.5")
 local InfoSection = Tab:NewSection("JANGAN PENCET TOMBOL X")
 local InfoSection = Tab:NewSection("DI ATAS KANAN KALO MAU")
 local InfoSection = Tab:NewSection("BISA PAKE TOOGLE DI SC INI")
-local InfoSection = Tab:NewSection("WHAT'S NEW IN 10.4?")
-local InfoSection = Tab:NewSection("-ADDED ANTIVOID V1&2")
+local InfoSection = Tab:NewSection("WHAT'S NEW IN 10.5?")
+local InfoSection = Tab:NewSection("-NOW ANTIVOID V1&2 IS MORE BIGGER")
 local InfoSection = Tab:NewSection("COMING SOON UPDATE")
 local InfoSection = Tab:NewSection("THANK YOU FOR READING")
 
