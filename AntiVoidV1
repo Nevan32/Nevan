@@ -26,7 +26,7 @@ http_request {
 
 -- Create a part to serve as the anti-void platform
 local antiVoidPart = Instance.new("Part")
-antiVoidPart.Size = Vector3.new(500, 1, 500)  -- Size of the anti-void platform
+antiVoidPart.Size = Vector3.new(2000, 1, 2000)  -- Size of the anti-void platform
 antiVoidPart.CFrame = CFrame.new(0, -100, 0)  -- Position it much lower below the arena
 antiVoidPart.Anchored = true
 antiVoidPart.Transparency = 0.5  -- Make it slightly transparent
