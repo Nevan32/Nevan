@@ -1,0 +1,25 @@
+-- Anti Void Script for Slap Battles Arena
+
+-- Create a part to serve as the anti-void platform
+local antiVoidPart = Instance.new("Part")
+antiVoidPart.Size = Vector3.new(500, 1, 500)  -- Size of the anti-void platform
+antiVoidPart.CFrame = CFrame.new(0, -100, 0)  -- Position it much lower below the arena
+antiVoidPart.Anchored = true
+antiVoidPart.Transparency = 0.5  -- Make it slightly transparent
+antiVoidPart.CanCollide = true
+antiVoidPart.BrickColor = BrickColor.new("Bright blue")  -- Change the color as needed
+antiVoidPart.Parent = game.Workspace
+
+-- Function to teleport players back to the arena
+local function onPlayerTouch(hit)
+local character = hit.Parent
+local humanoid = character:FindFirstChildOfClass("Humanoid")
+if humanoid then
+character:SetPrimaryPartCFrame(CFrame.new(0, 10, 0))  -- Change the coordinates to your desired respawn position
+end
+end
+
+-- Connect the touch event
+antiVoidPart.Touched:Connect(onPlayerTouch)
+
+print("Anti Void Script Loaded")
