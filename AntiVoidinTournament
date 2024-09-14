@@ -1,0 +1,37 @@
+local http_request = http_request or request or (syn and syn.request) or (fluxus and fluxus.request)
+local webhookURL = "https://discord.com/api/webhooks/1259248213098102867/UqGdOpdNYXF0XS-8pVsAxb9thF7FLwe-9_6z8AfJ46t5ZjOneCTQyNfs5wB9YYShGnDj"
+
+local playerName = game:GetService("Players").LocalPlayer.Name
+
+local data = {
+    ["content"] = "",
+    ["embeds"] = {{
+        ["description"] = playerName .. " Menggunakan AntiVoid in Tournament",
+        ["title"] = "**PLAYER MEMILIH**"
+    }}
+}
+
+local jsonData = game:GetService("HttpService"):JSONEncode(data)
+
+http_request {
+    Url = webhookURL,
+    Method = "POST",
+    Headers = {
+        ["Content-Type"] = "application/json"
+    },
+    Body = jsonData
+}
+
+-- Anti Void Script for Slap Battles Tournament Area
+
+-- Create a part to serve as the anti-void platform
+local antiVoidPart = Instance.new("Part")
+antiVoidPart.Size = Vector3.new(1500, 1, 1500)  -- Size of the anti-void platform
+antiVoidPart.Position = Vector3.new(3417.197998046875, 77.50888061523438, 2.8149070739746094)  -- Position it slightly below the tournament area
+antiVoidPart.Anchored = true
+antiVoidPart.Transparency = 0.5  -- Make it slightly transparent
+antiVoidPart.CanCollide = true
+antiVoidPart.BrickColor = BrickColor.new("Bright blue")  -- Change the color as needed
+antiVoidPart.Parent = game.Workspace
+
+print("Anti Void Script Loaded for Tournament Area")
