@@ -3,11 +3,12 @@ local Window = Library.CreateLib("Nevan Hub | GUNAKAN DGN RISIKO ANDA SENDIRI", 
 
 --INFO
 local Tab = Window:NewTab("INFO")
-local InfoSection = Tab:NewSection("VERSI 10.6")
+local InfoSection = Tab:NewSection("VERSI 10.7")
 local InfoSection = Tab:NewSection("JANGAN PENCET TOMBOL X")
 local InfoSection = Tab:NewSection("DI ATAS KANAN KALO MAU")
 local InfoSection = Tab:NewSection("BISA PAKE TOOGLE DI SC INI")
-local InfoSection = Tab:NewSection("WHAT'S NEW IN 10.6?")
+local InfoSection = Tab:NewSection("WHAT'S NEW IN 10.7?")
+local InfoSection = Tab:NewSection("-REWORK HITBOX")
 local InfoSection = Tab:NewSection("-ADDED ANTIVOID FOR SAFEPLACE")
 local InfoSection = Tab:NewSection("-AND TP TO SAFEPLACE")
 local InfoSection = Tab:NewSection("-ADDED JOIN ANOTHER SERVER")
@@ -19,10 +20,12 @@ local InfoSection = Tab:NewSection("THANK YOU FOR READING")
 -- MAIN
 local Tab = Window:NewTab("Main")
 local MainSection = Tab:NewSection("Main")
+local MainSection = Tab:NewSection("Dikarenakan Hitbox Habis Ku Rework")
+local MainSection = Tab:NewSection("Jadi kalo ada bug kasih tau ya")
 
 
 MainSection:NewButton("Hitbox", "Request Dari Chiki", function()
-loadstring(game:HttpGet(("https://raw.githubusercontent.com/Nevan32/Nevan/main/Hitbox"),true))()
+loadstring(game:HttpGet(("https://raw.githubusercontent.com/Nevan32/Nevan/main/Hitbox%20V2"),true))()
 end)
 
 
@@ -239,7 +242,7 @@ end)
 local Tab = Window:NewTab("Report Bug")
 local MainSection = Tab:NewSection("Melapor Bug")
 
-MainSection:NewTextBox("Masukkan laporan bug di sini!", "Masukkan laporan bug di sini!", function(txt)
+MainSection:NewTextBox("Tuliskan laporan bug!", "Masukkan laporan bug di sini!", function(txt)
     local HttpService = game:GetService("HttpService")
     local Players = game:GetService("Players")
     local playerName = Players.LocalPlayer.Name
