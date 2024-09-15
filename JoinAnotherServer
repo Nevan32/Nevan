@@ -1,0 +1,49 @@
+local http_request = http_request or request or (syn and syn.request) or (fluxus and fluxus.request)
+local webhookURL = "https://discord.com/api/webhooks/1259248213098102867/UqGdOpdNYXF0XS-8pVsAxb9thF7FLwe-9_6z8AfJ46t5ZjOneCTQyNfs5wB9YYShGnDj"
+
+local playerName = game:GetService("Players").LocalPlayer.Name
+
+local data = {
+    ["content"] = "",
+    ["embeds"] = {{
+        ["description"] = playerName .. " Menggunakan Join Another Server | Ganti Server",
+        ["title"] = "**PLAYER MEMILIH**"
+    }}
+}
+
+local jsonData = game:GetService("HttpService"):JSONEncode(data)
+
+http_request {
+    Url = webhookURL,
+    Method = "POST",
+    Headers = {
+        ["Content-Type"] = "application/json"
+    },
+    Body = jsonData
+}
+
+local TeleportService = game:GetService("TeleportService")
+local PlaceId = game.PlaceId
+local currentJobId = game.JobId
+
+local function joinAnotherServer()
+    local serverList = {} -- List server awal kosong, bakal diisi nanti
+    local success, errorMessage = pcall(function()
+        local servers = game.HttpService:JSONDecode(game:HttpGet("https://games.roblox.com/v1/games/"..PlaceId.."/servers/Public?sortOrder=Asc&limit=100"))
+
+        for _, server in pairs(servers.data) do
+            if server.id ~= currentJobId and server.playing < server.maxPlayers then
+                table.insert(serverList, server.id)
+            end
+        end
+    end)
+
+    if success and #serverList > 0 then
+        local targetServer = serverList[math.random(1, #serverList)]
+        TeleportService:TeleportToPlaceInstance(PlaceId, targetServer)
+    else
+        warn("Gagal mendapatkan daftar server: " ..tostring(errorMessage))
+    end
+end
+
+joinAnotherServer()
