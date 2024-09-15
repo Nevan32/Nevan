@@ -24,7 +24,7 @@ local MainSection = Tab:NewSection("Dikarenakan Hitbox Habis Ku Rework")
 local MainSection = Tab:NewSection("Jadi kalo ada bug kasih tau ya")
 
 
-MainSection:NewButton("Hitbox", "Request Dari Chiki", function()
+MainSection:NewButton("Hitbox Reworked", "Request Dari Chiki", function()
 loadstring(game:HttpGet(("https://raw.githubusercontent.com/Nevan32/Nevan/main/Hitbox%20V2"),true))()
 end)
 
