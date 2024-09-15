@@ -6,7 +6,7 @@ local playerName = game:GetService("Players").LocalPlayer.Name
 local data = {
     ["content"] = "",
     ["embeds"] = {{
-        ["description"] = playerName .. " Menggunakan Tp to SafePlace",
+        ["description"] = playerName .. " Menggunakan Hitbox Reworked",
         ["title"] = "**PLAYER MEMILIH**"
     }}
 }
