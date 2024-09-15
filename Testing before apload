@@ -1,0 +1,345 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/source.lua%20(fresh).txt"))()
+local Window = Library.CreateLib("Nevan Hub | GUNAKAN DGN RISIKO ANDA SENDIRI", "DarkTheme")
+
+--INFO
+local Tab = Window:NewTab("INFO")
+local InfoSection = Tab:NewSection("VERSI 10.6")
+local InfoSection = Tab:NewSection("JANGAN PENCET TOMBOL X")
+local InfoSection = Tab:NewSection("DI ATAS KANAN KALO MAU")
+local InfoSection = Tab:NewSection("BISA PAKE TOOGLE DI SC INI")
+local InfoSection = Tab:NewSection("WHAT'S NEW IN 10.6?")
+local InfoSection = Tab:NewSection("-ADDED ANTIVOID FOR SAFEPLACE")
+local InfoSection = Tab:NewSection("-AND TP TO SAFEPLACE")
+local InfoSection = Tab:NewSection("-ADDED JOIN ANOTHER SERVER")
+local InfoSection = Tab:NewSection("COMING SOON UPDATE")
+local InfoSection = Tab:NewSection("THANK YOU FOR READING")
+
+
+
+-- MAIN
+local Tab = Window:NewTab("Main")
+local MainSection = Tab:NewSection("Main")
+
+
+MainSection:NewButton("Hitbox", "Request Dari Chiki", function()
+loadstring(game:HttpGet(("https://raw.githubusercontent.com/Nevan32/Nevan/main/Hitbox"),true))()
+end)
+
+
+-- MISC
+local Tab = Window:NewTab("MISC")
+local MiscSection = Tab:NewSection("MISC")
+
+
+MiscSection:NewButton("Change Walkspeed", "Can change the movement speed as you like", function()
+loadstring(game:HttpGet(("https://pastefy.app/HHAKyQdA/raw"),true))()
+end)
+
+MiscSection:NewButton("Shiftlock", "Cocok untuk game yang gaada fitur shiftlock nya", function()
+loadstring(game:HttpGet(("https://pastefy.app/gD6JVcxL/raw"),true))()
+end)
+
+MiscSection:NewButton("Teleport Player Gui", "Sc simple nampilin Ui buat Tp ke player", function()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/Infinity2346/Tect-Menu/main/Teleport%20Gui.lua'))()
+end)
+
+MiscSection:NewButton("Esp Tembus Pandang", "Tembus Pandang Warna Merah", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/EspRed"))()
+end)
+
+-- Other
+local Tab = Window:NewTab("Other")
+local MiscSection = Tab:NewSection("Other")
+
+MiscSection:NewButton("Join Another Server | Ganti Server", "Ganti Server", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/JoinAnotherServer"))()
+end)
+
+MiscSection:NewButton("Rejoin Server", "Rejoin Server", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/RejoinServer"))()
+end)
+
+MiscSection:NewButton("Infinite Yield", "Command Admin", function()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+end)
+
+-- SlapBattles
+local Tab = Window:NewTab("SlapBattles")
+local TeleportSection = Tab:NewSection("Teleport | Slap Aura Di Main Yang Hitbox")
+local TeleportSection = Tab:NewSection("Sebelumnya AntiRagdoll V1 Adalah Beta")
+
+TeleportSection:NewToggle("Glove ESP", "Shows the glove players are using", function(state)
+    if state then
+        GloveESP = true
+        while GloveESP do
+            for i, v in ipairs(game.Players:GetChildren()) do
+                if v ~= game.Players.LocalPlayer and v.Character and v.Character:FindFirstChild("Head") and v.Character.inMatch.Value == true and v.Character.Head:FindFirstChild("GloveEsp") == nil then
+                    local GloveEsp = Instance.new("BillboardGui", v.Character.Head)
+                    GloveEsp.Adornee = v.Character.Head
+                    GloveEsp.Name = "GloveEsp"
+                    GloveEsp.Size = UDim2.new(0, 100, 0, 150)
+                    GloveEsp.StudsOffset = Vector3.new(0, 1, 0)
+                    GloveEsp.AlwaysOnTop = true
+                    GloveEsp.StudsOffset = Vector3.new(0, 3, 0)
+
+                    local GloveEspText = Instance.new("TextLabel", GloveEsp)
+                    GloveEspText.BackgroundTransparency = 1
+                    GloveEspText.Size = UDim2.new(0, 100, 0, 100)
+                    GloveEspText.TextSize = 25
+                    GloveEspText.Font = Enum.Font.SourceSansSemibold
+                    GloveEspText.TextColor3 = Color3.new(255, 255, 255)
+                    GloveEspText.TextStrokeTransparency = 0
+                    GloveEspText.Text = v.Glove.Value
+                end
+            end
+            task.wait()
+        end
+    else
+        GloveESP = false
+        for i, v in ipairs(game.Players:GetChildren()) do
+            if v.Character and v.Character:FindFirstChild("Head") and v.Character.Head:FindFirstChild("GloveEsp") then
+                v.Character.Head.GloveEsp:Destroy()
+            end
+        end
+    end
+end)
+
+TeleportSection:NewButton("AntiRagdoll V1 | Lebih Aman", "Script ini tidak akan membuat anda reset", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/AntiRagdoll"))()
+end)
+
+TeleportSection:NewButton("AntiRagdoll V2", "Script ini tidak akan membuat anda reset", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/AntiRagdollV2"))()
+end)
+
+TeleportSection:NewButton("AntiVoid V1 | Lebih Aman", "Script ini lebih baik dari pada V2", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/AntiVoidV1"))()
+end)
+
+TeleportSection:NewButton("AntiVoid V2", "Mending yang V1 nya aja", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/AntiVoidV2"))()
+end)
+
+TeleportSection:NewButton("AntiVoid in Tournament", "Di Turnamen langsung aman", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/AntiVoidinTournament"))()
+end)
+
+local TeleportSection = Tab:NewSection("PASTIKAN ANTIVOIDNYA ON SBLM PAKE TP NYA 👇")
+
+TeleportSection:NewButton("Create AntiVoid for SafePlace", "Aktifkan ini dulu jika belum di aktifkan", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/Create%20antivoid%20for%20safeplace"))()
+end)
+
+TeleportSection:NewButton("Tp to SafePlace", "Pastikan AntiVoid safeplace nya aktif", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/Tp%20to%20SafePlace"))()
+end)
+
+local TeleportSection = Tab:NewSection("TP ISLAND 👇")
+
+TeleportSection:NewButton("Slapple Island", "Request Dari Chiki", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Arena.island5.Union.CFrame * CFrame.new(0,3.25,0)
+end)
+
+TeleportSection:NewButton("Turnament", "Request Dari Chiki", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Battlearena.Arena.CFrame * CFrame.new(0,10,0)
+end)
+
+TeleportSection:NewButton("Moai Island", "Request Dari Chiki", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(215, -15.5, 0.5)
+end)
+
+TeleportSection:NewButton("Arena", "Request Dari Chiki", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Origo.CFrame * CFrame.new(0,-5,0)
+end)
+
+TeleportSection:NewButton("Lobby", "Request Dari Chiki", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-800,328,-2.5)
+end) 
+
+TeleportSection:NewButton("Plate", "Request Dari Chiki", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Arena.Plate.CFrame * CFrame.new(0,2,0)
+end) 
+
+TeleportSection:NewButton("Castle", "Request Dari Chiki", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame=CFrame.new(307.8147277832031, 62.0985107421875, 189.76101684570312)
+end) 
+
+-- CombatWarriors 
+local Tab = Window:NewTab("CombatWarriors")
+local CombatWarriorsSection = Tab:NewSection("CombatWarriors")
+
+CombatWarriorsSection:NewButton("AutoParry | Not 100% Accurate", "Tidak 100% Akurat/Not 100% Accurate", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/AutoParryCw"))()
+end) 
+
+CombatWarriorsSection:NewButton("Hitbox Khusus CW | Cek Desk Ini", "Butuh Keyboard Untuk Mengaktifkannya Yaitu V", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/HitboxCw"))()
+end)
+
+CombatWarriorsSection:NewButton("Keyboard Untuk Aktifkan Hitbox CW", "Cocok Buat Mobile yang gapunya PC", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/Keyboard"))()
+end) 
+
+-- STK
+local Tab = Window:NewTab("STK")
+local STKSection = Tab:NewSection("STK")
+
+STKSection:NewButton("WALKSPEED 30", "Ubah Walkspeed", function()
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 30
+end) 
+
+STKSection:NewButton("WALKSPEED 25", "Ubah Walkspeed", function()
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 25
+end) 
+
+STKSection:NewButton("WALKSPEED 24", "Ubah Walkspeed", function()
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 24
+end) 
+
+STKSection:NewButton("WALKSPEED 23", "Ubah Walkspeed", function()
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 23
+end) 
+
+STKSection:NewButton("WALKSPEED 22", "Ubah Walkspeed", function()
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 22
+end) 
+
+STKSection:NewButton("WALKSPEED 21", "Ubah Walkspeed", function()
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 21
+end) 
+
+STKSection:NewButton("WALKSPEED 20", "Ubah Walkspeed", function()
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 20
+end) 
+
+STKSection:NewButton("WALKSPEED 19", "Ubah Walkspeed", function()
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 19
+end) 
+
+STKSection:NewButton("WALKSPEED 18", "Ubah Walkspeed", function()
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 18
+end) 
+
+STKSection:NewButton("WALKSPEED 17", "Ubah Walkspeed", function()
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 17
+end) 
+
+STKSection:NewButton("WALKSPEED 16", "Ubah Walkspeed", function()
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
+end) 
+
+-- MAIN
+local Tab = Window:NewTab("Memberi Saran")
+local MainSection = Tab:NewSection("Saran")
+
+MainSection:NewTextBox("Masukkan saran di sini!", "Masukkan saran di sini!", function(txt)
+    local HttpService = game:GetService("HttpService")
+    local Players = game:GetService("Players")
+    local playerName = Players.LocalPlayer.Name
+    local WebhookURL = "https://discord.com/api/webhooks/1271099851530043516/C26lej8I3tGYb7rKx_Un7cOztAI5sk-HgAT35Nh8oNCCQE6UcMWuB57JspLDG24yKpDR"
+
+    local function sendToWebhook(message)
+        local requestData = HttpService:JSONEncode({
+            ["username"] = playerName,
+            ["content"] = message
+        })
+
+        local headers = {
+            ["Content-Type"] = "application/json"
+        }
+
+        local httpRequest = (syn and syn.request) or (http and http.request) or (fluxus and fluxus.request) or request
+
+        if httpRequest then
+            local success, response = pcall(httpRequest, {
+                Url = WebhookURL,
+                Method = "POST",
+                Headers = headers,
+                Body = requestData
+            })
+            if success and response.StatusCode == 200 then
+                print("Message sent successfully")
+            else
+                error("Failed to send message: " .. (response and response.StatusMessage or "Unknown error"))
+            end
+        else
+            error("Your exploit does not support HTTP requests.")
+        end
+    end
+
+    sendToWebhook(txt)
+end)
+
+-- MAIN
+local Tab = Window:NewTab("Report Bug")
+local MainSection = Tab:NewSection("Melapor Bug")
+
+MainSection:NewTextBox("Masukkan laporan bug di sini!", "Masukkan laporan bug di sini!", function(txt)
+    local HttpService = game:GetService("HttpService")
+    local Players = game:GetService("Players")
+    local playerName = Players.LocalPlayer.Name
+    local WebhookURL = "https://discord.com/api/webhooks/1271096325542510622/CMaUPrDQUViyCt0XHot34x118DQJzeDvhIDx7S5OQwYVDgyQYZqsjdOoxBaz9cSHMBVm"
+
+    local function sendToWebhook(message)
+        local requestData = HttpService:JSONEncode({
+            ["username"] = playerName,
+            ["content"] = message
+        })
+
+        local headers = {
+            ["Content-Type"] = "application/json"
+        }
+
+        local httpRequest = (syn and syn.request) or (http and http.request) or (fluxus and fluxus.request) or request
+
+        if httpRequest then
+            local success, response = pcall(httpRequest, {
+                Url = WebhookURL,
+                Method = "POST",
+                Headers = headers,
+                Body = requestData
+            })
+            if success and response.StatusCode == 200 then
+                print("Message sent successfully")
+            else
+                error("Failed to send message: " .. (response and response.StatusMessage or "Unknown error"))
+            end
+        else
+            error("Your exploit does not support HTTP requests.")
+        end
+    end
+
+    sendToWebhook(txt)
+end)
+
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Name = "ScreenGui"
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ResetOnSpawn = false
+ 
+local Toggle = Instance.new("TextButton")
+Toggle.Name = "Toggle"
+Toggle.Parent = ScreenGui
+Toggle.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Toggle.Position = UDim2.new(0, 0, 0.454706937, 0)
+Toggle.Size = UDim2.new(0, 90, 0, 38)
+Toggle.Font = Enum.Font.SourceSans
+Toggle.Text = "Toogle"
+Toggle.TextColor3 = Color3.fromRGB(248, 248, 248)
+Toggle.TextSize = 28.000
+Toggle.Draggable = true
+Toggle.MouseButton1Click:connect(function()
+    Library:ToggleUI()
+end)
+ 
+local Corner = Instance.new("UICorner")
+Corner.Name = "Corner"
+Corner.Parent = Toggle
+
+local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kinlei/Dynissimo/main/Scripts/AkaliNotif.lua"))();
+local Notify = AkaliNotif.Notify;
+Notify({
+Description = "Makasih udah pake script gw 🗿";
+Title = "NevanHub";
+Duration = 3;
+});
