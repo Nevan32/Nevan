@@ -10,6 +10,7 @@ local InfoSection = Tab:NewSection("BISA PAKE TOOGLE DI SC INI")
 local InfoSection = Tab:NewSection("WHAT'S NEW IN 10.6?")
 local InfoSection = Tab:NewSection("-ADDED ANTIVOID FOR SAFEPLACE")
 local InfoSection = Tab:NewSection("-AND TP TO SAFEPLACE")
+local InfoSection = Tab:NewSection("-ADDED JOIN ANOTHER SERVER")
 local InfoSection = Tab:NewSection("COMING SOON UPDATE")
 local InfoSection = Tab:NewSection("THANK YOU FOR READING")
 
@@ -49,6 +50,10 @@ end)
 -- Other
 local Tab = Window:NewTab("Other")
 local MiscSection = Tab:NewSection("Other")
+
+MiscSection:NewButton("Join Another Server | Ganti Server", "Ganti Server", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/JoinAnotherServer"))()
+end)
 
 MiscSection:NewButton("Rejoin Server", "Rejoin Server", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/RejoinServer"))()
