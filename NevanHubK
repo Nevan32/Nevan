@@ -10,6 +10,7 @@ local InfoSection = Tab:NewSection("BISA PAKE TOOGLE DI SC INI")
 local InfoSection = Tab:NewSection("WHAT'S NEW IN 10.8?")
 local InfoSection = Tab:NewSection("-CHANGE THE COLOR OF THE HITBOX TO WHITE")
 local InfoSection = Tab:NewSection("-AND HITBOX BECOMES MORE TRANSPARENT")
+local InfoSection = Tab:NewSection("-ADDED SMALL HITBOX")
 local InfoSection = Tab:NewSection("COMING SOON UPDATE")
 local InfoSection = Tab:NewSection("THANK YOU FOR READING")
 
@@ -26,6 +27,9 @@ MainSection:NewButton("Hitbox Reworked", "Request Dari Chiki", function()
 loadstring(game:HttpGet(("https://raw.githubusercontent.com/Nevan32/Nevan/main/Hitbox%20V2"),true))()
 end)
 
+MainSection:NewButton("Small Hitbox Reworked", "Tidak dapat dideteksi oleh orang lain", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/refs/heads/main/Small%20Hitbox%20V2"))()
+end)
 
 -- MISC
 local Tab = Window:NewTab("MISC")
