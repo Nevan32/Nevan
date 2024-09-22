@@ -3,15 +3,13 @@ local Window = Library.CreateLib("Nevan Hub | GUNAKAN DGN RISIKO ANDA SENDIRI", 
 
 --INFO
 local Tab = Window:NewTab("INFO")
-local InfoSection = Tab:NewSection("VERSI 10.7")
+local InfoSection = Tab:NewSection("VERSI 10.8")
 local InfoSection = Tab:NewSection("JANGAN PENCET TOMBOL X")
 local InfoSection = Tab:NewSection("DI ATAS KANAN KALO MAU")
 local InfoSection = Tab:NewSection("BISA PAKE TOOGLE DI SC INI")
-local InfoSection = Tab:NewSection("WHAT'S NEW IN 10.7?")
-local InfoSection = Tab:NewSection("-REWORK HITBOX")
-local InfoSection = Tab:NewSection("-ADDED ANTIVOID FOR SAFEPLACE")
-local InfoSection = Tab:NewSection("-AND TP TO SAFEPLACE")
-local InfoSection = Tab:NewSection("-ADDED JOIN ANOTHER SERVER")
+local InfoSection = Tab:NewSection("WHAT'S NEW IN 10.8?")
+local InfoSection = Tab:NewSection("-CHANGE THE COLOR OF THE HITBOX TO WHITE")
+local InfoSection = Tab:NewSection("-AND HITBOX BECOMES MORE TRANSPARENT")
 local InfoSection = Tab:NewSection("COMING SOON UPDATE")
 local InfoSection = Tab:NewSection("THANK YOU FOR READING")
 
