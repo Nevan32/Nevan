@@ -1,19 +1,29 @@
-local Library = loadstring(game:HttpGet("https://pastebin.com/raw/vff1bQ9F"))()
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/source.lua%20(fresh).txt"))()
 local Window = Library.CreateLib("Nevan Hub | GUNAKAN DGN RISIKO ANDA SENDIRI", "DarkTheme")
 
 --INFO
 local Tab = Window:NewTab("INFO")
+local InfoSection = Tab:NewSection("VERSI 10.8")
 local InfoSection = Tab:NewSection("JANGAN PENCET TOMBOL X")
 local InfoSection = Tab:NewSection("DI ATAS KANAN KALO MAU")
 local InfoSection = Tab:NewSection("BISA PAKE TOOGLE DI SC INI")
+local InfoSection = Tab:NewSection("WHAT'S NEW IN 10.8?")
+local InfoSection = Tab:NewSection("-CHANGE THE COLOR OF THE HITBOX TO WHITE")
+local InfoSection = Tab:NewSection("-AND HITBOX BECOMES MORE TRANSPARENT")
+local InfoSection = Tab:NewSection("COMING SOON UPDATE")
+local InfoSection = Tab:NewSection("THANK YOU FOR READING")
+
+
 
 -- MAIN
 local Tab = Window:NewTab("Main")
 local MainSection = Tab:NewSection("Main")
+local MainSection = Tab:NewSection("Dikarenakan Hitbox Habis Ku Rework")
+local MainSection = Tab:NewSection("Jadi kalo ada bug kasih tau ya")
 
 
-MainSection:NewButton("Hitbox", "Request Dari Chiki", function()
-loadstring(game:HttpGet(("https://raw.githubusercontent.com/Nevan32/Nevan/main/Hitbox"),true))()
+MainSection:NewButton("Hitbox Reworked", "Request Dari Chiki", function()
+loadstring(game:HttpGet(("https://raw.githubusercontent.com/Nevan32/Nevan/main/Hitbox%20V2"),true))()
 end)
 
 
@@ -30,17 +40,25 @@ MiscSection:NewButton("Shiftlock", "Cocok untuk game yang gaada fitur shiftlock 
 loadstring(game:HttpGet(("https://pastefy.app/gD6JVcxL/raw"),true))()
 end)
 
-MiscSection:NewButton("Esp Tembus Pandang", "Tembus Pandang Warna Merah", function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/EspRed"))()
-end)
-
 MiscSection:NewButton("Teleport Player Gui", "Sc simple nampilin Ui buat Tp ke player", function()
 loadstring(game:HttpGet('https://raw.githubusercontent.com/Infinity2346/Tect-Menu/main/Teleport%20Gui.lua'))()
+end)
+
+MiscSection:NewButton("Esp Tembus Pandang", "Tembus Pandang Warna Merah", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/EspRed"))()
 end)
 
 -- Other
 local Tab = Window:NewTab("Other")
 local MiscSection = Tab:NewSection("Other")
+
+MiscSection:NewButton("Join Another Server | Ganti Server", "Ganti Server", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/JoinAnotherServer"))()
+end)
+
+MiscSection:NewButton("Rejoin Server", "Rejoin Server", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/RejoinServer"))()
+end)
 
 MiscSection:NewButton("Infinite Yield", "Command Admin", function()
 loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
@@ -49,6 +67,40 @@ end)
 -- SlapBattles
 local Tab = Window:NewTab("SlapBattles")
 local TeleportSection = Tab:NewSection("Teleport | Slap Aura Di Main Yang Hitbox")
+local TeleportSection = Tab:NewSection("Sebelumnya AntiRagdoll V1 Adalah Beta")
+
+
+TeleportSection:NewButton("AntiRagdoll V1 | Lebih Aman", "Script ini tidak akan membuat anda reset", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/AntiRagdoll"))()
+end)
+
+TeleportSection:NewButton("AntiRagdoll V2", "Script ini tidak akan membuat anda reset", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/AntiRagdollV2"))()
+end)
+
+TeleportSection:NewButton("AntiVoid V1 | Lebih Aman", "Script ini lebih baik dari pada V2", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/AntiVoidV1"))()
+end)
+
+TeleportSection:NewButton("AntiVoid V2", "Mending yang V1 nya aja", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/AntiVoidV2"))()
+end)
+
+TeleportSection:NewButton("AntiVoid in Tournament", "Di Turnamen langsung aman", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/AntiVoidinTournament"))()
+end)
+
+local TeleportSection = Tab:NewSection("PASTIKAN ANTIVOIDNYA ON SBLM PAKE TP NYA 👇")
+
+TeleportSection:NewButton("Create AntiVoid for SafePlace", "Aktifkan ini dulu jika belum di aktifkan", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/Create%20antivoid%20for%20safeplace"))()
+end)
+
+TeleportSection:NewButton("Tp to SafePlace", "Pastikan AntiVoid safeplace nya aktif", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/Tp%20to%20SafePlace"))()
+end)
+
+local TeleportSection = Tab:NewSection("TP ISLAND 👇")
 
 TeleportSection:NewButton("Slapple Island", "Request Dari Chiki", function()
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Arena.island5.Union.CFrame * CFrame.new(0,3.25,0)
@@ -72,6 +124,10 @@ end)
 
 TeleportSection:NewButton("Plate", "Request Dari Chiki", function()
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Arena.Plate.CFrame * CFrame.new(0,2,0)
+end) 
+
+TeleportSection:NewButton("Castle", "Request Dari Chiki", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame=CFrame.new(307.8147277832031, 62.0985107421875, 189.76101684570312)
 end) 
 
 -- CombatWarriors 
@@ -184,7 +240,7 @@ end)
 local Tab = Window:NewTab("Report Bug")
 local MainSection = Tab:NewSection("Melapor Bug")
 
-MainSection:NewTextBox("Masukkan laporan bug di sini!", "Masukkan laporan bug di sini!", function(txt)
+MainSection:NewTextBox("Tuliskan laporan bug!", "Masukkan laporan bug di sini!", function(txt)
     local HttpService = game:GetService("HttpService")
     local Players = game:GetService("Players")
     local playerName = Players.LocalPlayer.Name
@@ -251,5 +307,5 @@ local Notify = AkaliNotif.Notify;
 Notify({
 Description = "Makasih udah pake script gw 🗿";
 Title = "NevanHub";
-Duration = 10;
+Duration = 3;
 });
