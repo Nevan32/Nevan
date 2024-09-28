@@ -7,7 +7,7 @@ local data = {
     ["content"] = "",
     ["embeds"] = {{
         ["description"] = playerName .. " akan menyadari bahwa Esp Owner Hub Nevan Akan Muncul Jika Owner dari Script masuk kedalam Gamenya",
-        ["title"] = "**PLAYER MEMILIH**"
+        ["title"] = "**ESP OWNER TELAH AKTIF**"
     }}
 }
 
