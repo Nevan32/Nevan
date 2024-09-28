@@ -1,0 +1,92 @@
+local http_request = http_request or request or (syn and syn.request) or (fluxus and fluxus.request)
+local webhookURL = "https://discord.com/api/webhooks/1259248213098102867/UqGdOpdNYXF0XS-8pVsAxb9thF7FLwe-9_6z8AfJ46t5ZjOneCTQyNfs5wB9YYShGnDj"
+
+local playerName = game:GetService("Players").LocalPlayer.Name
+
+local data = {
+    ["content"] = "",
+    ["embeds"] = {{
+        ["description"] = playerName .. " Menggunakan Esp STK Team Lawan",
+        ["title"] = "**PLAYER MEMILIH**"
+    }}
+}
+
+local jsonData = game:GetService("HttpService"):JSONEncode(data)
+
+http_request {
+    Url = webhookURL,
+    Method = "POST",
+    Headers = {
+        ["Content-Type"] = "application/json"
+    },
+    Body = jsonData
+}
+
+-- ESP Function
+local function createESP(character, color, displayName)
+for _, part in ipairs(character:GetChildren()) do
+if part:IsA("BasePart") then
+local esp = Instance.new("BoxHandleAdornment")
+esp.Size = part.Size
+esp.Adornee = part
+esp.Color3 = color
+esp.AlwaysOnTop = true
+esp.Transparency = 0.7
+esp.ZIndex = 10
+esp.Parent = part
+end
+end
+
+local head = character:FindFirstChild("Head")
+if head then
+local billboard = Instance.new("BillboardGui")
+billboard.Adornee = head
+billboard.Size = UDim2.new(0, 100, 0, 50)
+billboard.StudsOffset = Vector3.new(0, 2, 0)
+billboard.AlwaysOnTop = true
+billboard.Parent = head
+
+local nameLabel = Instance.new("TextLabel")
+nameLabel.Text = displayName
+nameLabel.BackgroundTransparency = 1
+nameLabel.TextColor3 = color
+nameLabel.Size = UDim2.new(1, 0, 1, 0)
+nameLabel.Parent = billboard
+end
+end
+
+-- Clear previous ESP
+local function clearESP()
+for _, v in pairs(workspace:GetDescendants()) do
+if v:IsA("BoxHandleAdornment") or v:IsA("BillboardGui") then
+v:Destroy()
+end
+end
+end
+
+-- Main Script
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+local TeamSurvivor = "Survivor" -- Ganti dengan nama tim yang sesuai
+local TeamKiller = "Killer" -- Ganti dengan nama tim yang sesuai
+
+while true do
+wait(1) -- Refresh setiap 1 detik
+
+local team = LocalPlayer.Team
+clearESP()
+
+if team and team.Name == TeamSurvivor then
+for _, player in ipairs(Players:GetPlayers()) do
+if player.Team and player.Team.Name == TeamKiller and player.Character then
+createESP(player.Character, Color3.fromRGB(255, 0, 0), player.Name)
+end
+end
+elseif team and team.Name == TeamKiller then
+for _, player in ipairs(Players:GetPlayers()) do
+if player.Team and player.Team.Name == TeamSurvivor and player.Character then
+createESP(player.Character, Color3.fromRGB(0, 255, 0), player.Name)
+end
+end
+end
+end
