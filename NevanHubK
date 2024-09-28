@@ -152,7 +152,7 @@ end)
 local Tab = Window:NewTab("STK")
 local STKSection = Tab:NewSection("STK")
 
-STKSection:NewButton("Esp Team Lawan | Baca Deskripsi)", "Jika Anda Adalah Survivor maka Esp Killer Akan Aktif, Jika Anda Adalah Killer Maka Esp Survivor akan Aktif", function()
+STKSection:NewButton("Esp Team Lawan | Baca Deskripsi", "Di Discord di channel Update-Log", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/refs/heads/main/Esp%20Lawan%20Stk"))()
 end) 
 
