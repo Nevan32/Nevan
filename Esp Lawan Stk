@@ -90,3 +90,5 @@ end
 end
 end
 end
+
+game.StarterGui:SetCore('SendNotification', { Title = 'Esp Team Lawan di STK'; Text = 'Aktif'; Duration = 5; })
