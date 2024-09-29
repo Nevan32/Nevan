@@ -19,7 +19,7 @@ local data = {
         ),
         ["color"] = 65280, -- Ubah ke warna hijau
         ["footer"] = {
-            ["text"] = "Join our Discord server: https://discord.gg/vKrYGpPdMQ - " .. os.date("%X")
+            ["text"] = "MADE BY NEVAN - WAKTU : " .. os.date("%X")
         }
     }}
 }
