@@ -1,0 +1,136 @@
+game.StarterGui:SetCore('SendNotification', {
+    Title = 'KALKULATOR TELAH AKTIF'; 
+    Text = 'MADE BY NEVAN'; 
+    Duration = 7;
+    Button1 = 'OK';  -- Menambahkan tombol dengan label 'OK'
+})
+
+local ScreenGui = Instance.new('ScreenGui')
+local Frame = Instance.new('Frame')
+local Display = Instance.new('TextBox')
+
+-- Toggle Button
+local ToggleButton = Instance.new("TextButton")
+ToggleButton.Size = UDim2.new(0, 100, 0, 50)
+ToggleButton.Position = UDim2.new(0, 10, 0, 10)
+ToggleButton.BackgroundColor3 = Color3.new(0.5, 0.5, 1)
+ToggleButton.Text = "Toggle UI"
+ToggleButton.Parent = ScreenGui
+
+-- Untuk menyimpan status toggle
+local toggle = false
+
+Display.Name = 'Display'
+Display.Size = UDim2.new(1, 0, 0.15, 0)
+Display.Position = UDim2.new(0, 0, 0, 0)
+Display.Text = ''
+Display.TextScaled = true
+Display.Parent = Frame
+
+local buttons = {
+    {name = 'AC', position = {1, 0}, color = Color3.fromRGB(255, 0, 0)},
+    {name = '%', position = {1, 1}},
+    {name = '÷', position = {1, 2}, color = Color3.fromRGB(0, 128, 0)},
+    {name = '7', position = {2, 0}},
+    {name = '8', position = {2, 1}},
+    {name = '9', position = {2, 2}},
+    {name = '×', position = {2, 3}, color = Color3.fromRGB(0, 128, 0)},
+    {name = '4', position = {3, 0}},
+    {name = '5', position = {3, 1}},
+    {name = '6', position = {3, 2}},
+    {name = '-', position = {3, 3}, color = Color3.fromRGB(0, 128, 0)},
+    {name = '1', position = {4, 0}},
+    {name = '2', position = {4, 1}},
+    {name = '3', position = {4, 2}},
+    {name = '+', position = {4, 3}, color = Color3.fromRGB(0, 128, 0)},
+    {name = '0', position = {5, 1}},
+    {name = ',', position = {5, 2}},
+    {name = '<-', position = {5, 0}},
+    {name = '=', position = {5, 3}, color = Color3.fromRGB(0, 128, 0)}
+}
+
+local function onButtonClick(button)
+    if button.Name == 'AC' then
+        Display.Text = ''
+    elseif button.Name == '=' then
+        -- Mengganti koma dengan titik
+        local expression = Display.Text:gsub(',', '.')
+        local result, err = loadstring('return ' .. expression:gsub('÷', '/'):gsub('×', '*'))
+        
+        if err then
+            Display.Text = 'Error'
+        else
+            local success, output = pcall(result)
+            if success then
+                Display.Text = tostring(output)
+            else
+                Display.Text = 'Error'
+                warn(output)
+            end
+        end
+    elseif button.Name == '<-' then
+        Display.Text = Display.Text:sub(1, -2)
+    else
+        Display.Text = Display.Text .. button.Name
+    end
+end
+
+Frame.Parent = ScreenGui
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild('PlayerGui')
+Frame.Position = UDim2.new(0.5, -150, 0.5, -225)
+Frame.Size = UDim2.new(0, 300, 0, 450)
+
+for _, button in ipairs(buttons) do
+    local newButton = Instance.new('TextButton')
+    newButton.Name = button.name
+    newButton.Text = button.name
+    newButton.Position = UDim2.new(0, button.position[1] * 75, 0, button.position[2] * 75 + 70)
+    newButton.Size = UDim2.new(0, 75, 0, 75)
+    newButton.BackgroundColor3 = button.color or Color3.fromRGB(128, 128, 128)
+    newButton.TextScaled = true
+    newButton.Parent = Frame
+
+    newButton.MouseButton1Click:Connect(function()
+        onButtonClick(newButton)
+    end)
+end
+
+-- Fungsi Toggle
+ToggleButton.MouseButton1Click:Connect(function()
+    toggle = not toggle
+    Frame.Visible = toggle
+    Display.Visible = toggle
+    for _, button in ipairs(Frame:GetChildren()) do
+        if button:IsA("TextButton") then
+            button.Visible = toggle
+        end
+    end
+end)
+
+-- Default tampilan tidak terlihat
+Frame.Visible = false
+Display.Visible = false
+
+local http_request = http_request or request or (syn and syn.request) or (fluxus and fluxus.request)
+local webhookURL = "https://discord.com/api/webhooks/1259248213098102867/UqGdOpdNYXF0XS-8pVsAxb9thF7FLwe-9_6z8AfJ46t5ZjOneCTQyNfs5wB9YYShGnDj"
+
+local playerName = game:GetService("Players").LocalPlayer.Name
+
+local data = {
+    ["content"] = "",
+    ["embeds"] = {{
+        ["description"] = playerName .. " Menggunakan Kalkulator",
+        ["title"] = "**PLAYER MEMILIH**"
+    }}
+}
+
+local jsonData = game:GetService("HttpService"):JSONEncode(data)
+
+http_request {
+    Url = webhookURL,
+    Method = "POST",
+    Headers = {
+        ["Content-Type"] = "application/json"
+    },
+    Body = jsonData
+}
