@@ -1,0 +1,218 @@
+game.StarterGui:SetCore('SendNotification', {
+    Title = 'TRANSLATOR TELAH AKTIF'; 
+    Text = 'MADE BY NEVAN'; 
+    Duration = 7;
+    Button1 = 'OK';  -- Menambahkan tombol dengan label 'OK'
+})
+
+-- Aktifkan service HTTP
+local http = game:GetService("HttpService")
+local players = game:GetService("Players")
+local userInputService = game:GetService("UserInputService") -- Untuk deteksi clipboard di beberapa executor
+
+-- Adaptasi untuk berbagai executor
+local http_request = http_request or request or (syn and syn.request) or (fluxus and fluxus.request)
+
+-- Buat GUI Screen
+local player = players.LocalPlayer
+local screenGui = Instance.new("ScreenGui")
+screenGui.Parent = player:WaitForChild("PlayerGui")
+screenGui.Name = "TranslatorGUI"
+
+-- Buat Frame utama
+local mainFrame = Instance.new("Frame")
+mainFrame.Size = UDim2.new(0, 400, 0, 300)
+mainFrame.Position = UDim2.new(0.5, -200, 0.5, -150)
+mainFrame.BackgroundColor3 = Color3.new(1, 1, 1)
+mainFrame.Parent = screenGui
+
+-- Buat label "Bahasa Indonesia"
+local indonesianLabel = Instance.new("TextLabel")
+indonesianLabel.Text = "Bahasa Indonesia"
+indonesianLabel.Size = UDim2.new(0, 180, 0, 40)
+indonesianLabel.Position = UDim2.new(0, 10, 0, 10)
+indonesianLabel.BackgroundColor3 = Color3.new(1, 1, 1)
+indonesianLabel.Parent = mainFrame
+
+-- Buat TextBox untuk input Bahasa Indonesia
+local inputTextBox = Instance.new("TextBox")
+inputTextBox.PlaceholderText = "Masukkan teks bahasa Indonesia"
+inputTextBox.Size = UDim2.new(0, 180, 0, 100)
+inputTextBox.Position = UDim2.new(0, 10, 0, 60)
+inputTextBox.BackgroundColor3 = Color3.new(0.9, 0.9, 0.9)
+inputTextBox.Parent = mainFrame
+
+-- Buat label "Bahasa Inggris"
+local englishLabel = Instance.new("TextLabel")
+englishLabel.Text = "Bahasa Inggris"
+englishLabel.Size = UDim2.new(0, 180, 0, 40)
+englishLabel.Position = UDim2.new(0, 210, 0, 10)
+englishLabel.BackgroundColor3 = Color3.new(1, 1, 1)
+englishLabel.Parent = mainFrame
+
+-- Buat TextBox untuk output Bahasa Inggris
+local outputTextBox = Instance.new("TextBox")
+outputTextBox.PlaceholderText = "Hasil translate ke bahasa Inggris"
+outputTextBox.Size = UDim2.new(0, 180, 0, 100)
+outputTextBox.Position = UDim2.new(0, 210, 0, 60)
+outputTextBox.BackgroundColor3 = Color3.new(0.9, 0.9, 0.9)
+outputTextBox.TextEditable = false -- Membuat TextBox tidak bisa diisi manual
+outputTextBox.Parent = mainFrame
+
+-- Buat tombol translate "->"
+local translateButton = Instance.new("TextButton")
+translateButton.Text = "->"
+translateButton.Size = UDim2.new(0, 50, 0, 40)
+translateButton.Position = UDim2.new(0.5, -25, 0, 100) -- Posisikan tombol di tengah antara dua TextBox
+translateButton.BackgroundColor3 = Color3.new(0.7, 0.7, 0.7)
+translateButton.Parent = mainFrame
+
+-- Buat tombol salin
+local copyButton = Instance.new("TextButton")
+copyButton.Text = "Salin"
+copyButton.Size = UDim2.new(0, 180, 0, 40)
+copyButton.Position = UDim2.new(0, 210, 0, 170)
+copyButton.BackgroundColor3 = Color3.new(0.7, 0.7, 0.7)
+copyButton.Parent = mainFrame
+
+-- Fungsi untuk menerjemahkan teks menggunakan Google Translate API
+local function translateText(text)
+    -- API URL Google Translate
+    local apiUrl = "https://translate.googleapis.com/translate_a/single?client=gtx&sl=id&tl=en&dt=t&q=" .. http:UrlEncode(text)
+    
+    -- Kirim permintaan HTTP ke API
+    local response
+    local success, err = pcall(function()
+        if http_request then
+            response = http_request({
+                Url = apiUrl,
+                Method = "GET"
+            }).Body
+        else
+            response = http:GetAsync(apiUrl)
+        end
+    end)
+    
+    -- Jika berhasil
+    if success then
+        -- Parsing respons dari API
+        local result = http:JSONDecode(response)
+        return result[1][1][1] -- Hasil terjemahan
+    else
+        warn("Gagal menerjemahkan: " .. err)
+        return ""
+    end
+end
+
+-- Event untuk ketika tombol translate ditekan
+translateButton.MouseButton1Click:Connect(function()
+    local inputText = inputTextBox.Text -- Ambil teks dari TextBox input
+    local translatedText = translateText(inputText) -- Terjemahkan teks
+    outputTextBox.Text = translatedText -- Tampilkan hasil di TextBox output
+end)
+
+-- Fungsi untuk menyalin teks ke clipboard
+local function copyToClipboard(text)
+    -- Pastikan executor mendukung akses ke clipboard
+    if setclipboard then
+        setclipboard(text) -- Gunakan fungsi setclipboard jika didukung
+        print("Teks berhasil disalin ke clipboard: " .. text)
+    else
+        -- Fallback jika clipboard tidak didukung
+        warn("Clipboard tidak didukung di executor ini. Teks: " .. text)
+    end
+end
+
+-- Event untuk tombol salin
+copyButton.MouseButton1Click:Connect(function()
+    if outputTextBox.Text ~= "" then
+        -- Coba salin teks ke clipboard
+        copyToClipboard(outputTextBox.Text)
+    end
+end)
+
+-- Buat tombol toggle
+local toggleButton = Instance.new("TextButton")
+toggleButton.Text = "Toggle Translator"
+toggleButton.Size = UDim2.new(0, 100, 0, 50)
+toggleButton.Position = UDim2.new(0, 10, 0, 10)
+toggleButton.BackgroundColor3 = Color3.new(0.5, 0.5, 1)
+toggleButton.Parent = screenGui
+
+-- Untuk menyimpan status toggle
+local toggle = false
+
+-- Fungsi Toggle
+toggleButton.MouseButton1Click:Connect(function()
+    toggle = not toggle
+    mainFrame.Visible = toggle
+end)
+
+-- Default tampilan tidak terlihat
+mainFrame.Visible = false
+
+-- Fitur Dragable untuk Frame
+local dragging = false
+local dragStart = Vector3.new()
+local startPos = Vector3.new()
+
+-- Fungsi untuk mengatur drag
+local function startDrag(input)
+    dragging = true
+    dragStart = input.Position
+    startPos = mainFrame.Position
+end
+
+local function updateDrag(input)
+    if dragging then
+        local delta = input.Position - dragStart
+        mainFrame.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+    end
+end
+
+local function endDrag()
+    dragging = false
+end
+
+-- Menghubungkan event input ke fungsi drag
+mainFrame.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+        startDrag(input)
+    end
+end)
+
+mainFrame.InputChanged:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+        updateDrag(input)
+    end
+end)
+
+mainFrame.InputEnded:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+        endDrag()
+    end
+end)
+
+local http_request = http_request or request or (syn and syn.request) or (fluxus and fluxus.request)
+local webhookURL = "https://discord.com/api/webhooks/1259248213098102867/UqGdOpdNYXF0XS-8pVsAxb9thF7FLwe-9_6z8AfJ46t5ZjOneCTQyNfs5wB9YYShGnDj"
+
+local playerName = game:GetService("Players").LocalPlayer.Name
+
+local data = {
+    ["content"] = "",
+    ["embeds"] = {{
+        ["description"] = playerName .. " Menggunakan Script Translator",
+        ["title"] = "**PLAYER MEMILIH**"
+    }}
+}
+
+local jsonData = game:GetService("HttpService"):JSONEncode(data)
+
+http_request {
+    Url = webhookURL,
+    Method = "POST",
+    Headers = {
+        ["Content-Type"] = "application/json"
+    },
+    Body = jsonData
+}
