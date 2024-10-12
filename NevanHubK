@@ -3,13 +3,14 @@ local Window = Library.CreateLib("Nevan Hub | GUNAKAN DGN RISIKO ANDA SENDIRI", 
 
 --INFO
 local Tab = Window:NewTab("INFO")
-local InfoSection = Tab:NewSection("VERSI 11.2")
+local InfoSection = Tab:NewSection("VERSI 11.4")
 local InfoSection = Tab:NewSection("JANGAN PENCET TOMBOL X")
 local InfoSection = Tab:NewSection("DI ATAS KANAN KALO MAU")
 local InfoSection = Tab:NewSection("BISA PAKE TOOGLE DI SC INI")
-local InfoSection = Tab:NewSection("WHAT'S NEW IN 11.2?")
+local InfoSection = Tab:NewSection("WHAT'S NEW IN 11.4?")
 local InfoSection = Tab:NewSection("-ADDED KALKULATOR SCRIPT")
 local InfoSection = Tab:NewSection("-ADDED TRANSLATOR SCRIPT")
+local InfoSection = Tab:NewSection("-ADDED CHAT TRANSLATOR SCRIPT")
 local InfoSection = Tab:NewSection("-REMOVED ESP DI MISC KARENA GK BERGUNA")
 local InfoSection = Tab:NewSection("COMING SOON UPDATE")
 local InfoSection = Tab:NewSection("THANK YOU FOR READING")
@@ -54,6 +55,10 @@ end)
 
 MiscSection:NewButton("Translator B.Indo ke B.Inggris", "Translate Bahasa Indo Ke Bahasa Inggris", function()
 loadstring(game:HttpGet('https://raw.githubusercontent.com/Nevan32/Nevan/refs/heads/main/Translator%20bindo%20ke%20binggris'))()
+end)
+
+MiscSection:NewButton("Chat Translator ke B.Indo", "Chat yang dikirim ada versi translate nya", function()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/Nevan32/Nevan/refs/heads/main/ChatTranslator'))()
 end)
 
 -- Other
