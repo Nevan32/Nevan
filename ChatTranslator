@@ -69,9 +69,9 @@ translatedChatScrollFrame.ScrollBarThickness = 6
 
 -- Buat tombol toggle
 local toggleButton = Instance.new("TextButton")
-toggleButton.Text = "Toggle Translator"
+toggleButton.Text = "Chat Translator"
 toggleButton.Size = UDim2.new(0, 100, 0, 50)
-toggleButton.Position = UDim2.new(0, 10, 0, 10)
+toggleButton.Position = UDim2.new(1, -110, 0, 10) -- Pindahkan ke ujung kanan
 toggleButton.BackgroundColor3 = Color3.new(0.5, 0.5, 1)
 toggleButton.Parent = screenGui
 
@@ -201,6 +201,7 @@ mainFrame.InputChanged:Connect(function(input)
         updateDrag(input)
     end
 end)
+
 
 mainFrame.InputEnded:Connect(function(input)
     if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
