@@ -17,196 +17,206 @@ if not http_request then
     return
 end
 
--- Buat GUI
-local screenGui = Instance.new("ScreenGui")
-screenGui.Parent = player:WaitForChild("PlayerGui")
-screenGui.Name = "TranslatorGUI"
+-- Fungsi untuk memastikan UI tetap ada setelah karakter mati
+local function setupGUI()
+    -- Buat GUI
+    local screenGui = Instance.new("ScreenGui")
+    screenGui.Parent = player:WaitForChild("PlayerGui") -- Tetap di PlayerGui, tetapi bisa diulang setelah respawn
+    screenGui.Name = "TranslatorGUI"
 
--- Buat Frame utama
-local mainFrame = Instance.new("Frame")
-mainFrame.Size = UDim2.new(0, 400, 0, 300)
-mainFrame.Position = UDim2.new(0.5, -200, 0.5, -150)
-mainFrame.BackgroundColor3 = Color3.new(1, 1, 1)
-mainFrame.Parent = screenGui
+    -- Buat Frame utama
+    local mainFrame = Instance.new("Frame")
+    mainFrame.Size = UDim2.new(0, 400, 0, 300)
+    mainFrame.Position = UDim2.new(0.5, -200, 0.5, -150)
+    mainFrame.BackgroundColor3 = Color3.new(1, 1, 1)
+    mainFrame.Parent = screenGui
 
--- Label "Chat Biasa"
-local normalChatLabel = Instance.new("TextLabel")
-normalChatLabel.Size = UDim2.new(0, 180, 0, 20)
-normalChatLabel.Position = UDim2.new(0, 10, 0, 0)
-normalChatLabel.Text = "Chat Biasa"
-normalChatLabel.BackgroundTransparency = 1
-normalChatLabel.TextScaled = true
-normalChatLabel.TextColor3 = Color3.new(0, 0, 0)
-normalChatLabel.Parent = mainFrame
+    -- Label "Chat Biasa"
+    local normalChatLabel = Instance.new("TextLabel")
+    normalChatLabel.Size = UDim2.new(0, 180, 0, 20)
+    normalChatLabel.Position = UDim2.new(0, 10, 0, 0)
+    normalChatLabel.Text = "Chat Biasa"
+    normalChatLabel.BackgroundTransparency = 1
+    normalChatLabel.TextScaled = true
+    normalChatLabel.TextColor3 = Color3.new(0, 0, 0)
+    normalChatLabel.Parent = mainFrame
 
--- Label "Hasil Translate"
-local translatedChatLabel = Instance.new("TextLabel")
-translatedChatLabel.Size = UDim2.new(0, 180, 0, 20)
-translatedChatLabel.Position = UDim2.new(0, 210, 0, 0)
-translatedChatLabel.Text = "Hasil Translate"
-translatedChatLabel.BackgroundTransparency = 1
-translatedChatLabel.TextScaled = true
-translatedChatLabel.TextColor3 = Color3.new(0, 0, 0)
-translatedChatLabel.Parent = mainFrame
+    -- Label "Hasil Translate"
+    local translatedChatLabel = Instance.new("TextLabel")
+    translatedChatLabel.Size = UDim2.new(0, 180, 0, 20)
+    translatedChatLabel.Position = UDim2.new(0, 210, 0, 0)
+    translatedChatLabel.Text = "Hasil Translate"
+    translatedChatLabel.BackgroundTransparency = 1
+    translatedChatLabel.TextScaled = true
+    translatedChatLabel.TextColor3 = Color3.new(0, 0, 0)
+    translatedChatLabel.Parent = mainFrame
 
--- Buat ScrollFrame untuk chat biasa
-local normalChatScrollFrame = Instance.new("ScrollingFrame")
-normalChatScrollFrame.Size = UDim2.new(0, 180, 1, -40)
-normalChatScrollFrame.Position = UDim2.new(0, 10, 0, 30)
-normalChatScrollFrame.CanvasSize = UDim2.new(0, 0, 0, 0) -- Dinamis
-normalChatScrollFrame.BackgroundColor3 = Color3.new(0.9, 0.9, 0.9)
-normalChatScrollFrame.Parent = mainFrame
-normalChatScrollFrame.ScrollBarThickness = 6
+    -- Buat ScrollFrame untuk chat biasa
+    local normalChatScrollFrame = Instance.new("ScrollingFrame")
+    normalChatScrollFrame.Size = UDim2.new(0, 180, 1, -40)
+    normalChatScrollFrame.Position = UDim2.new(0, 10, 0, 30)
+    normalChatScrollFrame.CanvasSize = UDim2.new(0, 0, 0, 0) -- Dinamis
+    normalChatScrollFrame.BackgroundColor3 = Color3.new(0.9, 0.9, 0.9)
+    normalChatScrollFrame.Parent = mainFrame
+    normalChatScrollFrame.ScrollBarThickness = 6
 
--- Buat ScrollFrame untuk hasil terjemahan
-local translatedChatScrollFrame = Instance.new("ScrollingFrame")
-translatedChatScrollFrame.Size = UDim2.new(0, 180, 1, -40)
-translatedChatScrollFrame.Position = UDim2.new(0, 210, 0, 30)
-translatedChatScrollFrame.CanvasSize = UDim2.new(0, 0, 0, 0) -- Dinamis
-translatedChatScrollFrame.BackgroundColor3 = Color3.new(0.9, 0.9, 0.9)
-translatedChatScrollFrame.Parent = mainFrame
-translatedChatScrollFrame.ScrollBarThickness = 6
+    -- Buat ScrollFrame untuk hasil terjemahan
+    local translatedChatScrollFrame = Instance.new("ScrollingFrame")
+    translatedChatScrollFrame.Size = UDim2.new(0, 180, 1, -40)
+    translatedChatScrollFrame.Position = UDim2.new(0, 210, 0, 30)
+    translatedChatScrollFrame.CanvasSize = UDim2.new(0, 0, 0, 0) -- Dinamis
+    translatedChatScrollFrame.BackgroundColor3 = Color3.new(0.9, 0.9, 0.9)
+    translatedChatScrollFrame.Parent = mainFrame
+    translatedChatScrollFrame.ScrollBarThickness = 6
 
--- Buat tombol toggle
-local toggleButton = Instance.new("TextButton")
-toggleButton.Text = "Chat Translator"
-toggleButton.Size = UDim2.new(0, 100, 0, 50)
-toggleButton.Position = UDim2.new(1, -110, 0, 10) -- Pindahkan ke ujung kanan
-toggleButton.BackgroundColor3 = Color3.new(0.5, 0.5, 1)
-toggleButton.Parent = screenGui
+    -- Buat tombol toggle
+    local toggleButton = Instance.new("TextButton")
+    toggleButton.Text = "Chat Translator"
+    toggleButton.Size = UDim2.new(0, 100, 0, 50)
+    toggleButton.Position = UDim2.new(1, -110, 0, 10) -- Pindahkan ke ujung kanan
+    toggleButton.BackgroundColor3 = Color3.new(0.5, 0.5, 1)
+    toggleButton.Parent = screenGui
 
--- Untuk menyimpan status toggle
-local toggle = false
+    -- Untuk menyimpan status toggle
+    local toggle = false
 
--- Fungsi Toggle
-toggleButton.MouseButton1Click:Connect(function()
-    toggle = not toggle
-    mainFrame.Visible = toggle
-end)
+    -- Fungsi Toggle
+    toggleButton.MouseButton1Click:Connect(function()
+        toggle = not toggle
+        mainFrame.Visible = toggle
+    end)
 
--- Default tampilan tidak terlihat
-mainFrame.Visible = false
+    -- Default tampilan tidak terlihat
+    mainFrame.Visible = false
 
--- Fungsi untuk menambahkan pesan ke ScrollFrame
-local function addMessageToScroll(scrollFrame, message)
-    local messageLabel = Instance.new("TextLabel")
-    messageLabel.Size = UDim2.new(1, -10, 0, 0)
-    messageLabel.AutomaticSize = Enum.AutomaticSize.Y
-    messageLabel.TextWrapped = true
-    messageLabel.BackgroundTransparency = 1
-    messageLabel.Text = message
-    messageLabel.TextXAlignment = Enum.TextXAlignment.Left
-    messageLabel.Parent = scrollFrame
+    -- Fungsi untuk menambahkan pesan ke ScrollFrame
+    local function addMessageToScroll(scrollFrame, message)
+        local messageLabel = Instance.new("TextLabel")
+        messageLabel.Size = UDim2.new(1, -10, 0, 0)
+        messageLabel.AutomaticSize = Enum.AutomaticSize.Y
+        messageLabel.TextWrapped = true
+        messageLabel.BackgroundTransparency = 1
+        messageLabel.Text = message
+        messageLabel.TextXAlignment = Enum.TextXAlignment.Left
+        messageLabel.Parent = scrollFrame
 
-    -- Tambahkan pesan baru di bawah pesan sebelumnya
-    local currentCanvasHeight = scrollFrame.CanvasSize.Y.Offset
-    messageLabel.Position = UDim2.new(0, 5, 0, currentCanvasHeight + 5)
+        -- Tambahkan pesan baru di bawah pesan sebelumnya
+        local currentCanvasHeight = scrollFrame.CanvasSize.Y.Offset
+        messageLabel.Position = UDim2.new(0, 5, 0, currentCanvasHeight + 5)
 
-    -- Tambahkan space kosong jika teks cukup panjang
-    local paddingAmount = 50 -- Jumlah padding (spasi tambahan) jika diperlukan
-    local labelHeight = messageLabel.TextBounds.Y -- Tinggi teks label
+        -- Tambahkan space kosong jika teks cukup panjang
+        local paddingAmount = 50 -- Jumlah padding (spasi tambahan) jika diperlukan
+        local labelHeight = messageLabel.TextBounds.Y -- Tinggi teks label
 
-    -- Tambahkan padding hanya jika teks lebih panjang dari ukuran tertentu (misalnya 50)
-    if labelHeight > 50 then
-        scrollFrame.CanvasSize = UDim2.new(0, 0, 0, currentCanvasHeight + labelHeight + paddingAmount + 10)
-    else
-        scrollFrame.CanvasSize = UDim2.new(0, 0, 0, currentCanvasHeight + labelHeight + 10)
+        -- Tambahkan padding hanya jika teks lebih panjang dari ukuran tertentu (misalnya 50)
+        if labelHeight > 50 then
+            scrollFrame.CanvasSize = UDim2.new(0, 0, 0, currentCanvasHeight + labelHeight + paddingAmount + 10)
+        else
+            scrollFrame.CanvasSize = UDim2.new(0, 0, 0, currentCanvasHeight + labelHeight + 10)
+        end
+
+        -- Otomatis scroll ke bawah ketika ada pesan baru
+        scrollFrame.CanvasPosition = Vector2.new(0, scrollFrame.CanvasSize.Y.Offset)
     end
 
-    -- Otomatis scroll ke bawah ketika ada pesan baru
-    scrollFrame.CanvasPosition = Vector2.new(0, scrollFrame.CanvasSize.Y.Offset)
-end
+    -- Fungsi untuk menerjemahkan teks menggunakan Google Translate API
+    local function translateText(text)
+        local apiUrl = "https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=id&dt=t&q=" .. http:UrlEncode(text)
 
--- Fungsi untuk menerjemahkan teks menggunakan Google Translate API
-local function translateText(text)
-    local apiUrl = "https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=id&dt=t&q=" .. http:UrlEncode(text)
-
-    local response
-    local success, err = pcall(function()
-        -- Menggunakan http_request untuk mengirim permintaan
-        response = http_request {
-            Url = apiUrl,
-            Method = "GET",
-            Headers = {
-                ["Content-Type"] = "application/json"
+        local response
+        local success, err = pcall(function()
+            -- Menggunakan http_request untuk mengirim permintaan
+            response = http_request {
+                Url = apiUrl,
+                Method = "GET",
+                Headers = {
+                    ["Content-Type"] = "application/json"
+                }
             }
-        }
+        end)
+
+        if success and response.StatusCode == 200 then
+            local result = http:JSONDecode(response.Body)
+            return result[1][1][1] -- Hasil terjemahan
+        else
+            warn("Gagal menerjemahkan: " .. (err or "StatusCode: " .. response.StatusCode))
+            return ""
+        end
+    end
+
+    -- Event listener untuk mendeteksi chat player
+    local function onPlayerChatted(player, message)
+        -- Tambahkan pesan ke chat biasa
+        addMessageToScroll(normalChatScrollFrame, player.Name .. ": " .. message)
+
+        -- Terjemahkan pesan dan tambahkan ke chat terjemahan
+        local translatedText = translateText(message)
+        if translatedText ~= "" then
+            addMessageToScroll(translatedChatScrollFrame, player.Name .. ": " .. translatedText)
+        end
+    end
+
+    -- Fungsi untuk menghubungkan event chat dari setiap player
+    for _, plr in pairs(players:GetPlayers()) do
+        plr.Chatted:Connect(function(message)
+            onPlayerChatted(plr, message)
+        end)
+    end
+
+    -- Hubungkan event untuk player yang baru bergabung
+    players.PlayerAdded:Connect(function(newPlayer)
+        newPlayer.Chatted:Connect(function(message)
+            onPlayerChatted(newPlayer, message)
+        end)
     end)
 
-    if success and response.StatusCode == 200 then
-        local result = http:JSONDecode(response.Body)
-        return result[1][1][1] -- Hasil terjemahan
-    else
-        warn("Gagal menerjemahkan: " .. (err or "StatusCode: " .. response.StatusCode))
-        return ""
+    -- Fitur Dragable untuk Frame
+    local dragging = false
+    local dragStart = Vector3.new()
+    local startPos = Vector3.new()
+
+    local function startDrag(input)
+        dragging = true
+        dragStart = input.Position
+        startPos = mainFrame.Position
     end
-end
 
--- Event listener untuk mendeteksi chat player
-local function onPlayerChatted(player, message)
-    -- Tambahkan pesan ke chat biasa
-    addMessageToScroll(normalChatScrollFrame, player.Name .. ": " .. message)
-
-    -- Terjemahkan pesan dan tambahkan ke chat terjemahan
-    local translatedText = translateText(message)
-    if translatedText ~= "" then
-        addMessageToScroll(translatedChatScrollFrame, player.Name .. ": " .. translatedText)
+    local function updateDrag(input)
+        if dragging then
+            local delta = input.Position - dragStart
+            mainFrame.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+        end
     end
-end
 
--- Fungsi untuk menghubungkan event chat dari setiap player
-for _, plr in pairs(players:GetPlayers()) do
-    plr.Chatted:Connect(function(message)
-        onPlayerChatted(plr, message)
+    local function endDrag()
+        dragging = false
+    end
+
+    mainFrame.InputBegan:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+            startDrag(input)
+        end
+    end)
+
+    mainFrame.InputChanged:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+            updateDrag(input)
+        end
+    end)
+
+    mainFrame.InputEnded:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+            endDrag()
+        end
     end)
 end
 
--- Hubungkan event untuk player yang baru bergabung
-players.PlayerAdded:Connect(function(newPlayer)
-    newPlayer.Chatted:Connect(function(message)
-        onPlayerChatted(newPlayer, message)
-    end)
-end)
+-- Inisialisasi GUI pertama kali
+setupGUI()
 
--- Fitur Dragable untuk Frame
-local dragging = false
-local dragStart = Vector3.new()
-local startPos = Vector3.new()
-
-local function startDrag(input)
-    dragging = true
-    dragStart = input.Position
-    startPos = mainFrame.Position
-end
-
-local function updateDrag(input)
-    if dragging then
-        local delta = input.Position - dragStart
-        mainFrame.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
-    end
-end
-
-local function endDrag()
-    dragging = false
-end
-
-mainFrame.InputBegan:Connect(function(input)
-    if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-        startDrag(input)
-    end
-end)
-
-mainFrame.InputChanged:Connect(function(input)
-    if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
-        updateDrag(input)
-    end
-end)
-
-
-mainFrame.InputEnded:Connect(function(input)
-    if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-        endDrag()
-    end
+-- Hubungkan dengan event CharacterAdded agar UI direset ketika karakter respawn
+player.CharacterAdded:Connect(function()
+    setupGUI()
 end)
 
 local http_request = http_request or request or (syn and syn.request) or (fluxus and fluxus.request)
