@@ -17,7 +17,7 @@ local InfoSection = Tab:NewSection("THANK YOU FOR READING")
 
 -- MAIN
 local Tab = Window:NewTab("Main")
-local MainSection = Tab:NewSection("Main")
+local MainSection = Tab:NewSection(" Testing Map Eat The World")
 
 MainSection:NewToggle("Auto Grab", "Automatically grabs items", function(state)
     if state then
