@@ -3,15 +3,14 @@ local Window = Library.CreateLib("Nevan Hub | GUNAKAN DGN RISIKO ANDA SENDIRI", 
 
 --INFO
 local Tab = Window:NewTab("INFO")
-local InfoSection = Tab:NewSection("VERSI 11.4")
+local InfoSection = Tab:NewSection("VERSI 12.0")
 local InfoSection = Tab:NewSection("JANGAN PENCET TOMBOL X")
 local InfoSection = Tab:NewSection("DI ATAS KANAN KALO MAU")
 local InfoSection = Tab:NewSection("BISA PAKE TOOGLE DI SC INI")
-local InfoSection = Tab:NewSection("WHAT'S NEW IN 11.4?")
-local InfoSection = Tab:NewSection("-ADDED KALKULATOR SCRIPT")
-local InfoSection = Tab:NewSection("-ADDED TRANSLATOR SCRIPT")
-local InfoSection = Tab:NewSection("-ADDED CHAT TRANSLATOR SCRIPT")
-local InfoSection = Tab:NewSection("-REMOVED ESP DI MISC KARENA GK BERGUNA")
+local InfoSection = Tab:NewSection("WHAT'S NEW IN 12.0?")
+local InfoSection = Tab:NewSection("-NEW SCRIPT FOR GAME EAT THE WORLD")
+local InfoSection = Tab:NewSection("-AUTO GRAB")
+local InfoSection = Tab:NewSection("-AUTO EAT")
 local InfoSection = Tab:NewSection("COMING SOON UPDATE")
 local InfoSection = Tab:NewSection("THANK YOU FOR READING")
 
@@ -142,6 +141,45 @@ end)
 TeleportSection:NewButton("Castle", "Request Dari Chiki", function()
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame=CFrame.new(307.8147277832031, 62.0985107421875, 189.76101684570312)
 end) 
+
+local Tab = Window:NewTab("EatTheWorld")
+local EatTheWorldSection = Tab:NewSection("EatTheWorld")
+
+EatTheWorldSection:NewToggle("Auto Grab", "Automatically grabs items", function(state)
+    if state then
+        print("Auto Grab On")
+        _G.AutoGrab = true
+        while _G.AutoGrab do
+            local args = {
+                [1] = false,
+                [2] = false
+            }
+            game:GetService("Players").LocalPlayer.Character.Events.Grab:FireServer(unpack(args))
+            wait(0.5)
+            if not _G.AutoGrab then break end  -- Break loop if toggle is off
+        end
+    else
+        print("Auto Grab Off")
+        _G.AutoGrab = false
+    end
+end)
+
+-- Auto Eat Toggle
+EatTheWorldSection:NewToggle("Auto Eat", "Automatically eats items", function(state)
+    if state then
+        print("Auto Eat On")
+        _G.AutoEat = true
+        while _G.AutoEat do
+            game:GetService("Players").LocalPlayer.Character.Events.Eat:FireServer()
+            wait(0.5)
+            if not _G.AutoEat then break end  -- Break loop if toggle is off
+        end
+    else
+        print("Auto Eat Off")
+        _G.AutoEat = false
+    end
+end)
+
 
 -- CombatWarriors 
 local Tab = Window:NewTab("CombatWarriors")
