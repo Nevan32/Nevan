@@ -19,10 +19,11 @@ local InfoSection = Tab:NewSection("THANK YOU FOR READING")
 local Tab = Window:NewTab("Main")
 local MainSection = Tab:NewSection(" Testing Map Eat The World")
 
+-- Auto Grab Toggle
 MainSection:NewToggle("Auto Grab", "Automatically grabs items", function(state)
-    _G.AutoGrab = state
     if state then
         print("Auto Grab On")
+        _G.AutoGrab = true
         while _G.AutoGrab do
             local args = {
                 [1] = false,
@@ -30,25 +31,30 @@ MainSection:NewToggle("Auto Grab", "Automatically grabs items", function(state)
             }
             game:GetService("Players").LocalPlayer.Character.Events.Grab:FireServer(unpack(args))
             wait(0.5)
+            if not _G.AutoGrab then break end  -- Break loop if toggle is off
         end
     else
         print("Auto Grab Off")
+        _G.AutoGrab = false
     end
 end)
 
 -- Auto Eat Toggle
-Section:NewToggle("Auto Eat", "Automatically eats items", function(state)
-    _G.AutoEat = state
+MainSection:NewToggle("Auto Eat", "Automatically eats items", function(state)
     if state then
         print("Auto Eat On")
+        _G.AutoEat = true
         while _G.AutoEat do
             game:GetService("Players").LocalPlayer.Character.Events.Eat:FireServer()
             wait(0.5)
+            if not _G.AutoEat then break end  -- Break loop if toggle is off
         end
     else
         print("Auto Eat Off")
+        _G.AutoEat = false
     end
 end)
+
 
 
 
