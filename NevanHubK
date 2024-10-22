@@ -155,7 +155,7 @@ EatTheWorldSection:NewToggle("Auto Grab", "Automatically grabs items", function(
                 [2] = false
             }
             game:GetService("Players").LocalPlayer.Character.Events.Grab:FireServer(unpack(args))
-            wait(0.5)
+            wait(2.0)
             if not _G.AutoGrab then break end  -- Break loop if toggle is off
         end
     else
@@ -179,7 +179,6 @@ EatTheWorldSection:NewToggle("Auto Eat", "Automatically eats items", function(st
         _G.AutoEat = false
     end
 end)
-
 
 -- CombatWarriors 
 local Tab = Window:NewTab("CombatWarriors")
