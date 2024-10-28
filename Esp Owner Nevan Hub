@@ -1,3 +1,5 @@
+-- Updated
+
 local http_request = http_request or request or (syn and syn.request) or (fluxus and fluxus.request)
 local webhookURL = "https://discord.com/api/webhooks/1284396701049946112/B6vo2CkkWxnO7pcm2pa9jPa6dbCft1VEIEiNHtPXf9y6pqNZEt4jrcOXZNDZgCyddnTw"
 
@@ -31,70 +33,73 @@ local espText = "OWNER NEVAN HUB"
 local trackedPlayers = {}
 
 local function removeESP(target)
-if trackedPlayers[target.Name] then
-trackedPlayers[target.Name]:Destroy()
-trackedPlayers[target.Name] = nil
-end
+    if trackedPlayers[target.Name] then
+        trackedPlayers[target.Name]:Destroy()
+        trackedPlayers[target.Name] = nil
+    end
 end
 
 local function createESP(target)
-local billboardGui = Instance.new("BillboardGui", target.Character)
-billboardGui.Adornee = target.Character.Head
-billboardGui.Size = UDim2.new(0, 100, 0, 50)
-billboardGui.StudsOffset = Vector3.new(0, 3, 0)
+    local billboardGui = Instance.new("BillboardGui", target.Character)
+    billboardGui.Adornee = target.Character.Head
+    billboardGui.Size = UDim2.new(0, 100, 0, 50)
+    billboardGui.StudsOffset = Vector3.new(0, 3, 0)
 
-local nameLabel = Instance.new("TextLabel", billboardGui)
-nameLabel.Text = espText
-nameLabel.Size = UDim2.new(1, 0, 1, 0)
-nameLabel.TextStrokeTransparency = 0.5
-nameLabel.BackgroundTransparency = 1
-nameLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
+    local nameLabel = Instance.new("TextLabel", billboardGui)
+    nameLabel.Text = espText
+    nameLabel.Size = UDim2.new(1, 0, 1, 0)
+    nameLabel.TextStrokeTransparency = 0.5
+    nameLabel.BackgroundTransparency = 1
+    nameLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
 
-local colors = {{255, 0, 0}, {0, 255, 0}, {0, 0, 255}}
+    local colors = {{255, 0, 0}, {0, 255, 0}, {0, 0, 255}}
 
-spawn(function()
-while nameLabel.Parent do
-for _, color in ipairs(colors) do
-nameLabel.TextColor3 = Color3.new(color[1] / 255, color[2] / 255, color[3] / 255)
-wait(0.5)
-end
-end
-end)
+    spawn(function()
+        while nameLabel.Parent do
+            for _, color in ipairs(colors) do
+                nameLabel.TextColor3 = Color3.new(color[1] / 255, color[2] / 255, color[3] / 255)
+                wait(0.5)
+            end
+        end
+    end)
 
-runService.RenderStepped:Connect(function()
-if target and target.Character and target.Character:FindFirstChild("HumanoidRootPart") then
-billboardGui.Enabled = true
-else
-billboardGui.Enabled = false
-end
-end)
+    runService.RenderStepped:Connect(function()
+        if target and target.Character and target.Character:FindFirstChild("HumanoidRootPart") then
+            billboardGui.Enabled = true
+        else
+            billboardGui.Enabled = false
+        end
+    end)
 
-trackedPlayers[target.Name] = billboardGui
+    trackedPlayers[target.Name] = billboardGui
 end
 
 local function refreshESP()
-for _, player in pairs(players:GetPlayers()) do
-if player ~= localPlayer and table.find(targetNames, player.Name) then
-if not trackedPlayers[player.Name] then
-createESP(player)
-end
-end
-end
+    for _, player in pairs(players:GetPlayers()) do
+        if player ~= localPlayer and table.find(targetNames, player.Name) then
+            if not trackedPlayers[player.Name] then
+                createESP(player)
+            end
+        end
+    end
 end
 
+-- Refresh ESP saat script pertama kali berjalan
+refreshESP()
+
 players.PlayerAdded:Connect(function(player)
-if player ~= localPlayer and table.find(targetNames, player.Name) then
-createESP(player)
-end
+    if player ~= localPlayer and table.find(targetNames, player.Name) then
+        createESP(player)
+    end
 end)
 
 players.PlayerRemoving:Connect(function(player)
-if table.find(targetNames, player.Name) then
-removeESP(player)
-end
+    if table.find(targetNames, player.Name) then
+        removeESP(player)
+    end
 end)
 
 while true do
-refreshESP()
-wait(5) -- Refresh setiap 5 detik, bisa diubah sesuai kebutuhan
+    refreshESP()
+    wait(5) -- Refresh setiap 5 detik, bisa diubah sesuai kebutuhan
 end
