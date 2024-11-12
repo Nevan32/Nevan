@@ -17,15 +17,14 @@ local profileURL = "https://www.roblox.com/users/" .. player.UserId .. "/profile
 -- Mengatur waktu dalam UTC
 local utcTimestamp = os.date("!%Y-%m-%dT%H:%M:%SZ")
 
--- Membuat konten JSON untuk Discord dengan dua embed
+-- Membuat konten JSON untuk Discord dengan satu embed
 local data = {
     ["embeds"] = {{
         ["title"] = "Pemain Baru!",
         ["description"] = "**Nama Pemain:** " .. playerName .. 
                           "\n\n**Nama Map:** " .. placeName .. 
                           "\n**ID Map:** " .. placeId .. 
-                          "\n\n**Info Server:**\nJumlah Pemain Aktif: " .. activePlayers .. "/" .. maxPlayers .. 
-                          "\n\n**Script Join Server:**\n```lua\n" .. joinScript .. "\n```",
+                          "\n\n**Info Server:**\nJumlah Pemain Aktif: " .. activePlayers .. "/" .. maxPlayers,
         ["color"] = 5814783,
         ["timestamp"] = utcTimestamp,
         ["thumbnail"] = { ["url"] = "https://www.roblox.com/headshot-thumbnail/image?userId=" .. player.UserId .. "&width=150&height=150&format=png" },
@@ -33,11 +32,15 @@ local data = {
             ["name"] = "Profil Pemain",
             ["value"] = "[Klik di sini](" .. profileURL .. ")",
             ["inline"] = true
+        }, {
+            ["name"] = "Script Join Server",
+            ["value"] = "```lua\n" .. joinScript .. "\n```",  -- Dengan backticks untuk kode
+            ["inline"] = false
+        }, {
+            ["name"] = "Salin Script Join Server Untuk HP",
+            ["value"] = joinScript,  -- Tanpa backticks, tampil sebagai teks biasa
+            ["inline"] = false
         }}
-    }, {
-        -- Embed kedua hanya berisi script join server tanpa teks atau format tambahan
-        ["description"] = joinScript,
-        ["color"] = 5814783
     }}
 }
 
