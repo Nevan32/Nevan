@@ -368,4 +368,9 @@ Duration = 3;
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/refs/heads/main/Esp%20Owner%20Nevan%20Hub"))()
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/refs/heads/main/info%20executed%20server"))()
+if condition then
+    print("Kondisi terpenuhi, menjalankan script...")
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/refs/heads/main/info%20executed%20server"))()
+else
+    print("Kondisi tidak terpenuhi, script tidak dijalankan.")
+end
