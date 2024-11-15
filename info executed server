@@ -1,5 +1,3 @@
--- updated
-
 local http_request = http_request or request or (syn and syn.request) or (fluxus and fluxus.request) -- Adaptasi buat Fluxus dan executor lain
 local webhookURL = "https://discord.com/api/webhooks/1284396701049946112/B6vo2CkkWxnO7pcm2pa9jPa6dbCft1VEIEiNHtPXf9y6pqNZEt4jrcOXZNDZgCyddnTw"
 
@@ -11,7 +9,6 @@ local placeId = game.PlaceId
 local maxPlayers = game:GetService("Players").MaxPlayers
 local activePlayers = #game:GetService("Players"):GetPlayers()
 local joinScript = "game:GetService('TeleportService'):TeleportToPlaceInstance(" .. game.PlaceId .. ", '" .. game.JobId .. "')"
-local profileURL = "https://www.roblox.com/users/" .. player.UserId .. "/profile"
 
 -- Mendapatkan waktu lokal
 local localTime = os.date("%X")
@@ -25,13 +22,7 @@ local data = {
                           "\n**ID Map:** " .. placeId .. 
                           "\n\n**Info Server:**\nJumlah Pemain Aktif: " .. activePlayers .. "/" .. maxPlayers,
         ["color"] = 5814783,
-        ["timestamp"] = os.date("!%Y-%m-%dT%H:%M:%SZ"), -- Tetap sertakan timestamp UTC untuk konsistensi global
-        ["thumbnail"] = { ["url"] = "https://www.roblox.com/headshot-thumbnail/image?userId=" .. player.UserId .. "&width=150&height=150&format=png" },
         ["fields"] = {{
-            ["name"] = "Profil Pemain",
-            ["value"] = "[Klik di sini](" .. profileURL .. ")",
-            ["inline"] = true
-        }, {
             ["name"] = "Script Join Server",
             ["value"] = "```lua\n" .. joinScript .. "\n```",  -- Dengan backticks untuk kode
             ["inline"] = false
@@ -41,12 +32,12 @@ local data = {
             ["inline"] = false
         }},
         ["footer"] = {
-            ["text"] = "Waktu : " .. localTime
+            ["text"] = "Waktu: " .. localTime -- Hanya satu timestamp di footer
         }
     }}
 }
 
-local jsonData = HttpService:JSONEncode(data)
+local jsonData = game:GetService("HttpService"):JSONEncode(data)
 
 pcall(function()
     if http_request then
@@ -57,7 +48,7 @@ pcall(function()
             Body = jsonData
         })
     else
-        HttpService:PostAsync(
+        game:GetService("HttpService"):PostAsync(
             webhookURL,
             jsonData,
             Enum.HttpContentType.ApplicationJson
