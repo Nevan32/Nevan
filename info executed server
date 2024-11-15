@@ -14,8 +14,8 @@ local activePlayers = #game:GetService("Players"):GetPlayers()
 local joinScript = "game:GetService('TeleportService'):TeleportToPlaceInstance(" .. game.PlaceId .. ", '" .. game.JobId .. "')"
 local profileURL = "https://www.roblox.com/users/" .. player.UserId .. "/profile"
 
--- Mengatur waktu dalam UTC
-local utcTimestamp = os.date("!%Y-%m-%dT%H:%M:%SZ")
+-- Mendapatkan waktu lokal
+local localTime = os.date("%X")
 
 -- Membuat konten JSON untuk Discord dengan satu embed
 local data = {
@@ -26,7 +26,7 @@ local data = {
                           "\n**ID Map:** " .. placeId .. 
                           "\n\n**Info Server:**\nJumlah Pemain Aktif: " .. activePlayers .. "/" .. maxPlayers,
         ["color"] = 5814783,
-        ["timestamp"] = utcTimestamp,
+        ["timestamp"] = os.date("!%Y-%m-%dT%H:%M:%SZ"), -- Tetap sertakan timestamp UTC untuk konsistensi global
         ["thumbnail"] = { ["url"] = "https://www.roblox.com/headshot-thumbnail/image?userId=" .. player.UserId .. "&width=150&height=150&format=png" },
         ["fields"] = {{
             ["name"] = "Profil Pemain",
@@ -40,7 +40,10 @@ local data = {
             ["name"] = "Salin Script Join Server Untuk HP",
             ["value"] = joinScript,  -- Tanpa backticks, tampil sebagai teks biasa
             ["inline"] = false
-        }}
+        }},
+        ["footer"] = {
+            ["text"] = "Waktu : " .. localTime
+        }
     }}
 }
 
