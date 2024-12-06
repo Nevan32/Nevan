@@ -119,7 +119,7 @@ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Aren
 end)
 
 TeleportSection:NewButton("Turnament", "Request Dari Chiki", function()
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Battlearena.Arena.CFrame * CFrame.new(0,10,0)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame=CFrame.new(3430.389404296875, 239.37733459472656, -11.41250991821289)
 end)
 
 TeleportSection:NewButton("Moai Island", "Request Dari Chiki", function()
@@ -131,7 +131,7 @@ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Orig
 end)
 
 TeleportSection:NewButton("Lobby", "Request Dari Chiki", function()
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-800,328,-2.5)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame=CFrame.new(-41.84944152832031, 363.4560852050781, -1.7143232822418213)
 end) 
 
 TeleportSection:NewButton("Plate", "Request Dari Chiki", function()
