@@ -1,0 +1,108 @@
+local players = game:GetService("Players")
+local player = players.LocalPlayer
+
+-- Variabel untuk mengontrol aimbot
+local aimbotEnabled = false
+local lastCameraCFrame = nil
+local minimumDistance = 3 -- Jarak minimum agar tidak "muter-muter"
+
+-- Fungsi untuk aimbot
+local function aimbot()
+    if aimbotEnabled and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+        local nearestPlayer = nil
+        local nearestDistance = math.huge
+
+        -- Cari pemain terdekat
+        for _, plr in pairs(players:GetPlayers()) do
+            if plr ~= player and plr.Character and plr.Character:FindFirstChild("HumanoidRootPart") then
+                local distance = (plr.Character.HumanoidRootPart.Position - player.Character.HumanoidRootPart.Position).Magnitude
+                if distance < nearestDistance then
+                    nearestPlayer = plr
+                    nearestDistance = distance
+                end
+            end
+        end
+
+        -- Rotasi ke pemain terdekat jika ada dan jarak cukup
+        if nearestPlayer and nearestDistance > minimumDistance then
+            local target = nearestPlayer.Character.HumanoidRootPart
+            local characterPosition = player.Character.HumanoidRootPart.Position
+            local targetPosition = target.Position
+
+            -- Abaikan perbedaan ketinggian (Y)
+            local flatTargetPosition = Vector3.new(targetPosition.X, characterPosition.Y, targetPosition.Z)
+
+            -- Hitung arah rotasi hanya pada sumbu horizontal
+            local direction = (flatTargetPosition - characterPosition).unit
+
+            -- Terapkan rotasi
+            player.Character.HumanoidRootPart.CFrame = CFrame.new(characterPosition, characterPosition + direction)
+        end
+    end
+end
+
+-- Fungsi untuk membuat GUI aimbot
+local function setupGUI()
+    local screenGui = Instance.new("ScreenGui")
+    screenGui.Parent = player:WaitForChild("PlayerGui")
+    screenGui.Name = "AimbotControlGUI"
+
+    -- Frame utama
+    local mainFrame = Instance.new("Frame")
+    mainFrame.Size = UDim2.new(0, 200, 0, 150)
+    mainFrame.Position = UDim2.new(0.5, -100, 0.5, -75)
+    mainFrame.BackgroundColor3 = Color3.new(1, 1, 1)
+    mainFrame.Parent = screenGui
+
+    -- Tombol Aimbot
+    local aimbotButton = Instance.new("TextButton")
+    aimbotButton.Size = UDim2.new(0, 150, 0, 50)
+    aimbotButton.Position = UDim2.new(0.5, -75, 0.5, -25)
+    aimbotButton.BackgroundColor3 = Color3.new(0.5, 0.5, 0.5)
+    aimbotButton.TextColor3 = Color3.new(1, 1, 1)
+    aimbotButton.Font = Enum.Font.SourceSans
+    aimbotButton.Text = "OFF"
+    aimbotButton.Parent = mainFrame
+
+    -- Fungsi toggle aimbot
+    local function toggleAimbot()
+        aimbotEnabled = not aimbotEnabled
+        if aimbotEnabled then
+            aimbotButton.Text = "ON"
+            aimbotButton.BackgroundColor3 = Color3.new(0, 1, 0) -- Hijau jika ON
+            lastCameraCFrame = game.Workspace.CurrentCamera.CFrame
+        else
+            aimbotButton.Text = "OFF"
+            aimbotButton.BackgroundColor3 = Color3.new(0.5, 0.5, 0.5) -- Abu-abu jika OFF
+            game.Workspace.CurrentCamera.CFrame = lastCameraCFrame
+        end
+    end
+    aimbotButton.MouseButton1Click:Connect(toggleAimbot)
+
+    -- Tombol toggle GUI
+    local toggleButton = Instance.new("TextButton")
+    toggleButton.Text = "Aimbot Toggle"
+    toggleButton.Size = UDim2.new(0, 100, 0, 50)
+    toggleButton.Position = UDim2.new(1, -110, 0, 10)
+    toggleButton.BackgroundColor3 = Color3.new(0.5, 0.5, 1)
+    toggleButton.Parent = screenGui
+
+    local isMainFrameVisible = false
+    toggleButton.MouseButton1Click:Connect(function()
+        isMainFrameVisible = not isMainFrameVisible
+        mainFrame.Visible = isMainFrameVisible
+    end)
+
+    mainFrame.Visible = false
+end
+
+-- Inisialisasi GUI pertama kali
+setupGUI()
+
+-- Hubungkan dengan event CharacterAdded agar UI direset ketika karakter respawn
+player.CharacterAdded:Connect(function()
+    setupGUI()
+end)
+
+-- Jalankan aimbot setiap frame
+game:GetService("RunService").RenderStepped:Connect(aimbot)
