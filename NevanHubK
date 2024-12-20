@@ -131,7 +131,7 @@ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Orig
 end)
 
 TeleportSection:NewButton("Lobby", "Request Dari Chiki", function()
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame=CFrame.new(-41.84944152832031, 363.4560852050781, -1.7143232822418213)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame=CFrame.new(-899.7545776367188, 327.9945373535156, -0.8431311249732971)
 end) 
 
 TeleportSection:NewButton("Plate", "Request Dari Chiki", function()
