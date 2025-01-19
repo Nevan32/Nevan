@@ -1,5 +1,5 @@
 local http_request = http_request or request or (syn and syn.request) or (fluxus and fluxus.request)
-local webhookURL = "https://discord.com/api/webhooks/1284396701049946112/B6vo2CkkWxnO7pcm2pa9jPa6dbCft1VEIEiNHtPXf9y6pqNZEt4jrcOXZNDZgCyddnTw"
+local webhookURL = "https://discord.com/api/webhooks/1330353122261860412/bvIKWVleVANvxf3Wym9lhNtcBRAqL0lfd5uq_2FFMjZ_TqyKHmQThxg_29s0mBk361tN"
 
 -- Mendapatkan informasi dari pemain lokal
 local player = game:GetService("Players").LocalPlayer
