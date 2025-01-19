@@ -1,5 +1,5 @@
 local http_request = http_request or request or (syn and syn.request) or (fluxus and fluxus.request)
-local webhookURL = "https://discord.com/api/webhooks/1259248213098102867/UqGdOpdNYXF0XS-8pVsAxb9thF7FLwe-9_6z8AfJ46t5ZjOneCTQyNfs5wB9YYShGnDj"
+local webhookURL = "https://discord.com/api/webhooks/1330351349719629936/kVxPZHbX0t70f0B30z3MKXr6QJQ0v76W9EK4O9xbKYmx_mqHqaTdAL6bqc6xHh_z-cLh"
 
 local playerName = game:GetService("Players").LocalPlayer.Name
 
@@ -22,4 +22,17 @@ http_request {
     Body = jsonData
 }
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/main/ToRejoinServer"))()
+-- Script untuk Rejoin Server di Roblox
+local TeleportService = game:GetService("TeleportService")
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+
+local PlaceId = game.PlaceId
+local JobId = game.JobId
+
+local function RejoinServer()
+TeleportService:TeleportToPlaceInstance(PlaceId, JobId, LocalPlayer)
+end
+
+-- Jalankan fungsi rejoin server
+RejoinServer()
