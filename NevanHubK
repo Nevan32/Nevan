@@ -258,7 +258,7 @@ MainSection:NewTextBox("Masukkan saran di sini!", "Masukkan saran di sini!", fun
     local HttpService = game:GetService("HttpService")
     local Players = game:GetService("Players")
     local playerName = Players.LocalPlayer.Name
-    local WebhookURL = "https://discord.com/api/webhooks/1271099851530043516/C26lej8I3tGYb7rKx_Un7cOztAI5sk-HgAT35Nh8oNCCQE6UcMWuB57JspLDG24yKpDR"
+    local WebhookURL = "https://discord.com/api/webhooks/1330352021290618971/u8Y9MNdAe7NISVQIFRrc8YUQvTBF6izEVJJy6O8fPPfNAXnOaepli_rmN5CA3cniSAF1"
 
     local function sendToWebhook(message)
         local requestData = HttpService:JSONEncode({
@@ -300,7 +300,7 @@ MainSection:NewTextBox("Tuliskan laporan bug!", "Masukkan laporan bug di sini!",
     local HttpService = game:GetService("HttpService")
     local Players = game:GetService("Players")
     local playerName = Players.LocalPlayer.Name
-    local WebhookURL = "https://discord.com/api/webhooks/1271096325542510622/CMaUPrDQUViyCt0XHot34x118DQJzeDvhIDx7S5OQwYVDgyQYZqsjdOoxBaz9cSHMBVm"
+    local WebhookURL = "https://discord.com/api/webhooks/1330352338032005284/Na7BmGLrg8ZJk8vfZL7cS6fWmO2br0LOwsvh1Ung4O8Nkg8dVLmY899cVrr4ZgIc2AN6"
 
     local function sendToWebhook(message)
         local requestData = HttpService:JSONEncode({
