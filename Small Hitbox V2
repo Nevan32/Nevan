@@ -22,7 +22,7 @@ http_request {
     Body = jsonData
 }
 
-local HeadSize = 10
+local HeadSize = 5
 local IsTeamCheckEnabled = false
 
 -- Loop hitbox
