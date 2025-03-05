@@ -1,0 +1,160 @@
+-- Services
+local Players = game:GetService("Players")
+local TeleportService = game:GetService("TeleportService")
+local RunService = game:GetService("RunService")
+local UserInputService = game:GetService("UserInputService")
+local VirtualInputManager = game:GetService("VirtualInputManager")
+local HttpService = game:GetService("HttpService")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+-- Variables
+local player = Players.LocalPlayer
+local placeId = game.PlaceId
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoid, rootPart
+local HeadSize = 7
+local IsTeamCheckEnabled = false
+local webhookURL = "https://discord.com/api/webhooks/1346818602598268928/gQV1g9DJTT17kHKZwGlFFJULBiIZrlXSH5UP8iNWW5kwpOZ9C1kim8BTog7OBsVuPnJR"
+local http_request = http_request or request or (syn and syn.request) or (fluxus and fluxus.request)
+
+-- Fungsi untuk memperbarui karakter saat respawn
+local function updateCharacter(newCharacter)
+    character = newCharacter
+    humanoid = character:WaitForChild("Humanoid")
+    rootPart = character:WaitForChild("HumanoidRootPart")
+end
+
+updateCharacter(character)
+
+player.CharacterAdded:Connect(updateCharacter)
+
+-- Fungsi mendapatkan pemain terdekat
+local function getNearestPlayer()
+    local nearestPlayer = nil
+    local shortestDistance = math.huge
+
+    for _, targetPlayer in pairs(Players:GetPlayers()) do
+        if targetPlayer ~= player and targetPlayer.Character and targetPlayer.Character:FindFirstChild("HumanoidRootPart") then
+            local targetRoot = targetPlayer.Character.HumanoidRootPart
+            local distance = (rootPart.Position - targetRoot.Position).Magnitude
+
+            if distance < shortestDistance then
+                shortestDistance = distance
+                nearestPlayer = targetRoot
+            end
+        end
+    end
+
+    return nearestPlayer
+end
+
+-- Auto Kick setelah 20 menit + Auto Rejoin
+task.spawn(function()
+    task.wait(1200)
+    player:Kick("You have been disconnected after 20 minutes of gameplay.")
+    task.wait(3)
+    TeleportService:Teleport(placeId, player)
+end)
+
+-- Auto Chase dan Auto Click
+task.spawn(function()
+    while true do
+        if rootPart and humanoid then
+            local target = getNearestPlayer()
+            if target then
+                rootPart.CFrame = CFrame.lookAt(rootPart.Position, Vector3.new(target.Position.X, rootPart.Position.Y, target.Position.Z))
+                humanoid:MoveTo(target.Position)
+            end
+        end
+        task.wait(0.1)
+    end
+end)
+
+task.spawn(function()
+    while true do
+        VirtualInputManager:SendMouseButtonEvent(0, 0, 0, true, game, 0)
+        task.wait(0.1)
+        VirtualInputManager:SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        task.wait(0.9)
+    end
+end)
+
+-- Auto Enter Arena
+task.spawn(function()
+    while true do
+        if player.Character and player.Character:FindFirstChild("entered") == nil and player.Character:FindFirstChild("HumanoidRootPart") then
+            local head = player.Character:WaitForChild("Head")
+            firetouchinterest(head, workspace.Lobby.Teleport1, 0)
+            firetouchinterest(head, workspace.Lobby.Teleport1, 1)
+        end
+        task.wait(0.5)
+    end
+end)
+
+-- Hitbox Expander
+RunService.RenderStepped:Connect(function()
+    local localPlayerTeam = player.Team
+
+    for _, targetPlayer in ipairs(Players:GetPlayers()) do
+        if targetPlayer ~= player and (not IsTeamCheckEnabled or targetPlayer.Team ~= localPlayerTeam) then
+            local targetRoot = targetPlayer.Character and targetPlayer.Character:FindFirstChild("HumanoidRootPart")
+            if targetRoot then
+                targetRoot.Size = Vector3.new(HeadSize, HeadSize, HeadSize)
+                targetRoot.Transparency = 0.9
+                targetRoot.BrickColor = BrickColor.new("White")
+                targetRoot.Material = Enum.Material.Neon
+                targetRoot.CanCollide = false
+            end
+        end
+    end
+end)
+
+-- Auto Send Slaps Data ke Webhook
+local function formatNumber(n)
+    local s = tostring(n)
+    local formatted = s:reverse():gsub("(%d%d%d)", "%1."):reverse()
+    return formatted:sub(1, 1) == "." and formatted:sub(2) or formatted
+end
+
+local function sendSlapsData()
+    local leaderstats = player:FindFirstChild("leaderstats")
+    if leaderstats then
+        local slaps = leaderstats:FindFirstChild("Slaps")
+        if slaps then
+            local data = {
+                ["content"] = "",
+                ["embeds"] = {{
+                    ["description"] = player.Name .. " sudah punya " .. formatNumber(slaps.Value) .. " slap di Slap Battles",
+                    ["title"] = "**DATA SLAPS PLAYER**"
+                }}
+            }
+            local jsonData = HttpService:JSONEncode(data)
+            http_request {
+                Url = webhookURL,
+                Method = "POST",
+                Headers = {["Content-Type"] = "application/json"},
+                Body = jsonData
+            }
+        else
+            warn("Slaps stat tidak ditemukan!")
+        end
+    else
+        warn("leaderstats tidak ditemukan!")
+    end
+end
+
+task.spawn(function()
+    while true do
+        sendSlapsData()
+        task.wait(60)
+    end
+end)
+
+-- Auto Tournament Response
+task.spawn(function()
+    while true do
+        local args = {[1] = true}
+        ReplicatedStorage:WaitForChild("Events"):WaitForChild("Tournament"):WaitForChild("TournamentResponse"):FireServer(unpack(args))
+        task.wait(3)
+    end
+end)
