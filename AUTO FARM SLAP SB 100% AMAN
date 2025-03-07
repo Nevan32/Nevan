@@ -1,4 +1,4 @@
--- Update 4.3.3 (Modified: Restored Removed Features)
+-- Update 4.3.3 (Fixed: Auto Chase Restored)
 -- Services
 local Players = game:GetService("Players")
 local HttpService = game:GetService("HttpService")
@@ -52,7 +52,41 @@ updateCharacter(character)
 
 player.CharacterAdded:Connect(updateCharacter)
 
--- Fungsi Auto Rejoin dengan Embed di Webhook
+-- Fungsi mendapatkan pemain terdekat
+local function getNearestPlayer()
+    local nearestPlayer = nil
+    local shortestDistance = math.huge
+
+    for _, targetPlayer in pairs(Players:GetPlayers()) do
+        if targetPlayer ~= player and targetPlayer.Character and targetPlayer.Character:FindFirstChild("HumanoidRootPart") then
+            local targetRoot = targetPlayer.Character.HumanoidRootPart
+            local distance = (rootPart.Position - targetRoot.Position).Magnitude
+
+            if distance < shortestDistance then
+                shortestDistance = distance
+                nearestPlayer = targetRoot
+            end
+        end
+    end
+
+    return nearestPlayer
+end
+
+-- Auto Chase (Fix dari Script 1)
+task.spawn(function()
+    while true do
+        if rootPart and humanoid then
+            local target = getNearestPlayer()
+            if target then
+                rootPart.CFrame = CFrame.lookAt(rootPart.Position, Vector3.new(target.Position.X, rootPart.Position.Y, target.Position.Z))
+                humanoid:MoveTo(target.Position)
+            end
+        end
+        task.wait(0.1)
+    end
+end)
+
+-- Auto Rejoin jika terjadi error
 GuiService.ErrorMessageChanged:Connect(function()
     if http_request then
         local data = {
@@ -70,15 +104,15 @@ GuiService.ErrorMessageChanged:Connect(function()
         }
     end
 
-    task.wait(2) -- Tunggu 2 detik sebelum rejoin
+    task.wait(2)
     TeleportService:Teleport(placeId, player)
 end)
 
 -- Auto Kick setelah 20 menit + Auto Rejoin
 task.spawn(function()
     while true do
-        task.wait(1200) -- Tunggu 20 menit
-        TeleportService:Teleport(placeId, player) -- Langsung rejoin tanpa kick
+        task.wait(1200)
+        TeleportService:Teleport(placeId, player)
     end
 end)
 
