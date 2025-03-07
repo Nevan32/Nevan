@@ -1,0 +1,6 @@
+GuiService.ErrorMessageChanged:Connect(function()
+
+    
+    task.wait(3) 
+    TeleportService:Teleport(placeId, player)
+end
