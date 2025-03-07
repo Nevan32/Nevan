@@ -1,4 +1,4 @@
--- Update 4.3.3
+-- Update 4.3.3 (Modified: Restored Removed Features)
 -- Services
 local Players = game:GetService("Players")
 local HttpService = game:GetService("HttpService")
@@ -79,6 +79,46 @@ task.spawn(function()
     while true do
         task.wait(1200) -- Tunggu 20 menit
         TeleportService:Teleport(placeId, player) -- Langsung rejoin tanpa kick
+    end
+end)
+
+-- Auto Click
+task.spawn(function()
+    while true do
+        VirtualInputManager:SendMouseButtonEvent(0, 0, 0, true, game, 0)
+        task.wait(0.1)
+        VirtualInputManager:SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        task.wait(0.9)
+    end
+end)
+
+-- Auto Enter Arena
+task.spawn(function()
+    while true do
+        if player.Character and player.Character:FindFirstChild("entered") == nil and player.Character:FindFirstChild("HumanoidRootPart") then
+            local head = player.Character:WaitForChild("Head")
+            firetouchinterest(head, workspace.Lobby.Teleport1, 0)
+            firetouchinterest(head, workspace.Lobby.Teleport1, 1)
+        end
+        task.wait(0.5)
+    end
+end)
+
+-- Hitbox Expander
+RunService.RenderStepped:Connect(function()
+    local localPlayerTeam = player.Team
+
+    for _, targetPlayer in ipairs(Players:GetPlayers()) do
+        if targetPlayer ~= player and (not IsTeamCheckEnabled or targetPlayer.Team ~= localPlayerTeam) then
+            local targetRoot = targetPlayer.Character and targetPlayer.Character:FindFirstChild("HumanoidRootPart")
+            if targetRoot then
+                targetRoot.Size = Vector3.new(HeadSize, HeadSize, HeadSize)
+                targetRoot.Transparency = 0.9
+                targetRoot.BrickColor = BrickColor.new("White")
+                targetRoot.Material = Enum.Material.Neon
+                targetRoot.CanCollide = false
+            end
+        end
     end
 end)
 
