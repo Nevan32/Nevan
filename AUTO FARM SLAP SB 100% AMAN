@@ -1,11 +1,11 @@
--- Update 4.0
+-- Update 4.1
 -- Services
 local Players = game:GetService("Players")
+local HttpService = game:GetService("HttpService")
 local TeleportService = game:GetService("TeleportService")
 local RunService = game:GetService("RunService")
 local UserInputService = game:GetService("UserInputService")
 local VirtualInputManager = game:GetService("VirtualInputManager")
-local HttpService = game:GetService("HttpService")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local GuiService = game:GetService("GuiService")
 
@@ -18,6 +18,24 @@ local HeadSize = 7
 local IsTeamCheckEnabled = false
 local webhookURL = "https://discord.com/api/webhooks/1346818602598268928/gQV1g9DJTT17kHKZwGlFFJULBiIZrlXSH5UP8iNWW5kwpOZ9C1kim8BTog7OBsVuPnJR"
 local http_request = http_request or request or (syn and syn.request) or (fluxus and fluxus.request)
+
+-- Fungsi Kirim Notifikasi ke Webhook saat Script Dieksekusi Pertama Kali
+local function sendExecuteNotification()
+    if http_request then
+        local data = {
+            ["content"] = "**" .. player.Name .. " telah execute script auto farm slap di Slap Battles.**"
+        }
+        http_request {
+            Url = webhookURL,
+            Method = "POST",
+            Headers = {["Content-Type"] = "application/json"},
+            Body = HttpService:JSONEncode(data)
+        }
+    end
+end
+
+-- Kirim notifikasi saat script pertama kali dijalankan
+sendExecuteNotification()
 
 -- Fungsi untuk memperbarui karakter saat respawn
 local function updateCharacter(newCharacter)
