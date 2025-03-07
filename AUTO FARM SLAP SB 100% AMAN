@@ -1,4 +1,4 @@
--- Update 4.2
+-- Update 4.3
 -- Services
 local Players = game:GetService("Players")
 local HttpService = game:GetService("HttpService")
@@ -25,8 +25,8 @@ local function sendExecuteNotification()
         local data = {
             ["embeds"] = {{
                 ["title"] = "**SCRIPT EXECUTED**",
-                ["description"] = player.Name .. " telah execute script auto farm slap di Slap Battles.",
-                ["color"] = 16711680
+                ["description"] = player.Name .. " telah menjalankan script auto farm slap di Slap Battles!",
+                ["color"] = 16777215 -- Warna putih / biru muda
             }}
         }
         http_request {
@@ -59,7 +59,7 @@ GuiService.ErrorMessageChanged:Connect(function()
             ["embeds"] = {{
                 ["title"] = "**AUTO RECONNECT**",
                 ["description"] = player.Name .. " telah disconnect dari game dan mencoba reconnect...",
-                ["color"] = 16776960
+                ["color"] = 16776960 -- Warna kuning
             }}
         }
         http_request {
@@ -98,7 +98,7 @@ local function sendSlapsData()
                 ["embeds"] = {{
                     ["title"] = "**DATA SLAPS PLAYER**",
                     ["description"] = player.Name .. " sudah punya **" .. formatNumber(slaps.Value) .. "** slaps di Slap Battles.",
-                    ["color"] = 65280
+                    ["color"] = 65280 -- Warna hijau
                 }}
             }
             local jsonData = HttpService:JSONEncode(data)
