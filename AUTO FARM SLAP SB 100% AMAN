@@ -1,4 +1,4 @@
--- Update 3.0
+-- Update 4.0
 -- Services
 local Players = game:GetService("Players")
 local TeleportService = game:GetService("TeleportService")
@@ -7,6 +7,7 @@ local UserInputService = game:GetService("UserInputService")
 local VirtualInputManager = game:GetService("VirtualInputManager")
 local HttpService = game:GetService("HttpService")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local GuiService = game:GetService("GuiService")
 
 -- Variables
 local player = Players.LocalPlayer
@@ -29,6 +30,32 @@ updateCharacter(character)
 
 player.CharacterAdded:Connect(updateCharacter)
 
+-- Fungsi Auto Rejoin dengan Webhook
+GuiService.ErrorMessageChanged:Connect(function()
+    if http_request then
+        local data = {
+            ["content"] = "**" .. player.Name .. " telah disconnect dari game. Akan mencoba untuk rejoin kembali.**"
+        }
+        http_request {
+            Url = webhookURL,
+            Method = "POST",
+            Headers = {["Content-Type"] = "application/json"},
+            Body = HttpService:JSONEncode(data)
+        }
+    end
+
+    task.wait(2) -- Tunggu 2 detik sebelum rejoin
+    TeleportService:Teleport(placeId, player)
+end)
+
+-- Auto Kick setelah 20 menit + Auto Rejoin
+task.spawn(function()
+    while true do
+        task.wait(1200) -- Tunggu 20 menit
+        TeleportService:Teleport(placeId, player) -- Langsung rejoin tanpa kick
+    end
+end)
+
 -- Fungsi mendapatkan pemain terdekat
 local function getNearestPlayer()
     local nearestPlayer = nil
@@ -48,14 +75,6 @@ local function getNearestPlayer()
 
     return nearestPlayer
 end
-
--- Auto Kick setelah 20 menit + Auto Rejoin
-task.spawn(function()
-    while true do
-        task.wait(1200) -- Tunggu 20 menit
-        TeleportService:Teleport(placeId, player) -- Langsung rejoin tanpa kick
-    end
-end)
 
 -- Auto Chase dan Auto Click
 task.spawn(function()
