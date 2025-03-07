@@ -158,3 +158,6 @@ task.spawn(function()
         task.wait(3)
     end
 end)
+
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/refs/heads/main/AUTO%20RECONNECT"))()
