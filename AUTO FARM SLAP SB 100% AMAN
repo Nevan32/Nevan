@@ -1,4 +1,4 @@
--- Update 2.0
+-- Update 3.0
 -- Services
 local Players = game:GetService("Players")
 local TeleportService = game:GetService("TeleportService")
@@ -51,10 +51,10 @@ end
 
 -- Auto Kick setelah 20 menit + Auto Rejoin
 task.spawn(function()
-    task.wait(1200)
-    player:Kick("You have been disconnected after 20 minutes of gameplay.")
-    task.wait(3)
-    TeleportService:Teleport(placeId, player)
+    while true do
+        task.wait(1200) -- Tunggu 20 menit
+        TeleportService:Teleport(placeId, player) -- Langsung rejoin tanpa kick
+    end
 end)
 
 -- Auto Chase dan Auto Click
@@ -159,6 +159,3 @@ task.spawn(function()
         task.wait(3)
     end
 end)
-
-
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevan32/Nevan/refs/heads/main/AUTO%20RECONNECT"))()
